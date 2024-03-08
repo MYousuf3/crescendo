@@ -1,2 +1,2 @@
 # crescendo
-CS 3001 Project 2
+CS 2340 Project 2
