@@ -24,6 +24,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -43,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
     private String mAccessToken, mAccessCode;
     private Call mCall;
 
-    private TextView tokenTextView, codeTextView, profileTextView, displayName;
-    private ImageView avatar;
+    private TextView tokenTextView, codeTextView, profileTextView, itemTokenText, itemCodeText, trackText, displayName;
+    private ArrayList<Song> songs;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -56,13 +57,20 @@ public class MainActivity extends AppCompatActivity {
         tokenTextView = (TextView) findViewById(R.id.token_text_view);
         codeTextView = (TextView) findViewById(R.id.code_text_view);
         profileTextView = (TextView) findViewById(R.id.response_text_view);
-        avatar = findViewById(R.id.imageView);
+        itemTokenText = (TextView) findViewById(R.id.itemToken);
+        itemCodeText = (TextView) findViewById(R.id.itemCodeButton);
+        trackText = (TextView) findViewById(R.id.trackText);
         displayName = findViewById(R.id.displayName);
+        songs = new ArrayList<>();
 
         // Initialize the buttons
         Button tokenBtn = (Button) findViewById(R.id.token_btn);
         Button codeBtn = (Button) findViewById(R.id.code_btn);
         Button profileBtn = (Button) findViewById(R.id.profile_btn);
+
+        Button itemTokenBtn = (Button) findViewById(R.id.itemTokenButton);
+        Button itemCodeBtn = (Button) findViewById(R.id.itemCodeButton);
+        Button getItemBtn = (Button) findViewById(R.id.getItemButton);
 
         // Set the click listeners for the buttons
 
@@ -78,6 +86,18 @@ public class MainActivity extends AppCompatActivity {
             onGetUserProfileClicked();
         });
 
+        itemTokenBtn.setOnClickListener((v) -> {
+            getTokenItems();
+        });
+
+        itemCodeBtn.setOnClickListener((v) -> {
+            getCodeItems();
+        });
+
+        getItemBtn.setOnClickListener((v) -> {
+            onGetTopTracks();
+        });
+
     }
 
     /**
@@ -87,7 +107,12 @@ public class MainActivity extends AppCompatActivity {
      * https://developer.spotify.com/documentation/general/guides/authorization-guide/
      */
     public void getToken() {
-        final AuthorizationRequest request = getAuthenticationRequest(AuthorizationResponse.Type.TOKEN);
+        final AuthorizationRequest request = getAuthenticationRequest(AuthorizationResponse.Type.TOKEN, 0);
+        AuthorizationClient.openLoginActivity(MainActivity.this, AUTH_TOKEN_REQUEST_CODE, request);
+    }
+
+    public void getTokenItems() {
+        final AuthorizationRequest request = getAuthenticationRequest(AuthorizationResponse.Type.TOKEN, 1);
         AuthorizationClient.openLoginActivity(MainActivity.this, AUTH_TOKEN_REQUEST_CODE, request);
     }
 
@@ -98,7 +123,11 @@ public class MainActivity extends AppCompatActivity {
      * https://developer.spotify.com/documentation/general/guides/authorization-guide/
      */
     public void getCode() {
-        final AuthorizationRequest request = getAuthenticationRequest(AuthorizationResponse.Type.CODE);
+        final AuthorizationRequest request = getAuthenticationRequest(AuthorizationResponse.Type.CODE, 0);
+        AuthorizationClient.openLoginActivity(MainActivity.this, AUTH_CODE_REQUEST_CODE, request);
+    }
+    public void getCodeItems() {
+        final AuthorizationRequest request = getAuthenticationRequest(AuthorizationResponse.Type.CODE, 1);
         AuthorizationClient.openLoginActivity(MainActivity.this, AUTH_CODE_REQUEST_CODE, request);
     }
 
@@ -154,8 +183,70 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 try {
                     final JSONObject jsonObject = new JSONObject(response.body().string());
-                    setTextAsync(jsonObject.toString(3), profileTextView);
+                    //setTextAsync(jsonObject.toString(3), profileTextView);
 
+
+                    String nameString = jsonObject.getString("display_name");
+                    setTextAsync(nameString, displayName);
+                    /*
+                    JSONArray images = jsonObject.getJSONArray("images");
+                    JSONObject imagesObj = images.getJSONObject(0);
+                    String imageURL = imagesObj.getString("url");
+                    URL url = new URL(imageURL);
+                    Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            avatar.setImageBitmap(bmp);
+                            displayName.setText(nameString);
+                        }
+                    });
+                    */
+                } catch (JSONException e) {
+                    Log.d("JSON", "Failed to parse data: " + e);
+                    Toast.makeText(MainActivity.this, "Failed to parse data, watch Logcat for more details",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    public void onGetTopTracks() {
+        if (mAccessToken == null) {
+            Toast.makeText(this, "You need to get an access token first!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Create a request to get the user profile
+        final Request request = new Request.Builder()
+                .url("https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=20&offset=0")
+                .addHeader("Authorization", "Bearer " + mAccessToken)
+                .build();
+
+        cancelCall();
+        mCall = mOkHttpClient.newCall(request);
+
+        mCall.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d("HTTP", "Failed to fetch data: " + e);
+                Toast.makeText(MainActivity.this, "Failed to fetch data, watch Logcat for more details",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    final JSONObject jsonObject = new JSONObject(response.body().string());
+                    //setTextAsync(jsonObject.toString(3), profileTextView);
+                    String songText = "";
+                    JSONArray items = jsonObject.getJSONArray("items");
+                    for (int i = 0; i < items.length(); i++) {
+                        songs.add(new Song((JSONObject) items.get(i)));
+                        songText += (i + 1) + ". " + songs.get(i).toString() + "\n";
+                    }
+                    setTextAsync(songText, tokenTextView);
+                    /*
                     String nameString = jsonObject.getString("display_name");
 
                     JSONArray images = jsonObject.getJSONArray("images");
@@ -170,6 +261,67 @@ public class MainActivity extends AppCompatActivity {
                             displayName.setText(nameString);
                         }
                     });
+                    */
+                } catch (JSONException e) {
+                    Log.d("JSON", "Failed to parse data: " + e);
+                    Toast.makeText(MainActivity.this, "Failed to parse data, watch Logcat for more details",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    public void onGetTopArtists() {
+        if (mAccessToken == null) {
+            Toast.makeText(this, "You need to get an access token first!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Create a request to get the user profile
+        final Request request = new Request.Builder()
+                .url("https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=20&offset=0")
+                .addHeader("Authorization", "Bearer " + mAccessToken)
+                .build();
+
+        cancelCall();
+        mCall = mOkHttpClient.newCall(request);
+
+        mCall.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d("HTTP", "Failed to fetch data: " + e);
+                Toast.makeText(MainActivity.this, "Failed to fetch data, watch Logcat for more details",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    final JSONObject jsonObject = new JSONObject(response.body().string());
+                    setTextAsync(jsonObject.toString(3), profileTextView);
+                    String songText = "";
+                    JSONArray items = jsonObject.getJSONArray("items");
+                    for (int i = 0; i < items.length(); i++) {
+                        songs.add(new Song((JSONObject) items.get(i)));
+                        songText += (i + 1) + ". " + songs.get(i).toString() + "\n";
+                    }
+                    setTextAsync(songText, tokenTextView);
+                    /*
+                    String nameString = jsonObject.getString("display_name");
+
+                    JSONArray images = jsonObject.getJSONArray("images");
+                    JSONObject imagesObj = images.getJSONObject(0);
+                    String imageURL = imagesObj.getString("url");
+                    URL url = new URL(imageURL);
+                    Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            avatar.setImageBitmap(bmp);
+                            displayName.setText(nameString);
+                        }
+                    });
+                    */
                 } catch (JSONException e) {
                     Log.d("JSON", "Failed to parse data: " + e);
                     Toast.makeText(MainActivity.this, "Failed to parse data, watch Logcat for more details",
@@ -196,10 +348,17 @@ public class MainActivity extends AppCompatActivity {
      * @param type the type of the request
      * @return the authentication request
      */
-    private AuthorizationRequest getAuthenticationRequest(AuthorizationResponse.Type type) {
+    private AuthorizationRequest getAuthenticationRequest(AuthorizationResponse.Type type, int scope) {
+        if (scope == 0) {
+            return new AuthorizationRequest.Builder(CLIENT_ID, type, getRedirectUri().toString())
+                    .setShowDialog(false)
+                    .setScopes(new String[]{"user-read-email"}) // <--- Change the scope of your requested token here
+                    .setCampaign("your-campaign-token")
+                    .build();
+        }
         return new AuthorizationRequest.Builder(CLIENT_ID, type, getRedirectUri().toString())
                 .setShowDialog(false)
-                .setScopes(new String[] { "user-read-email" }) // <--- Change the scope of your requested token here
+                .setScopes(new String[]{"user-top-read"}) // <--- Change the scope of your requested token here
                 .setCampaign("your-campaign-token")
                 .build();
     }
