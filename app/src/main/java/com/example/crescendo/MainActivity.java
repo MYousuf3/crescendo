@@ -3,14 +3,11 @@ package com.example.crescendo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +20,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import okhttp3.Call;
@@ -46,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView tokenTextView, codeTextView, profileTextView, itemTokenText, itemCodeText, trackText, displayName;
     private ArrayList<Song> songs;
+    private ArrayList<Artist> artists;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -62,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         trackText = (TextView) findViewById(R.id.trackText);
         displayName = findViewById(R.id.displayName);
         songs = new ArrayList<>();
+        artists = new ArrayList<>();
 
         // Initialize the buttons
         Button tokenBtn = (Button) findViewById(R.id.token_btn);
@@ -71,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         Button itemTokenBtn = (Button) findViewById(R.id.itemTokenButton);
         Button itemCodeBtn = (Button) findViewById(R.id.itemCodeButton);
         Button getItemBtn = (Button) findViewById(R.id.getItemButton);
+        Button getArtistsBtn = (Button) findViewById(R.id.getArtists);
 
         // Set the click listeners for the buttons
 
@@ -96,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
 
         getItemBtn.setOnClickListener((v) -> {
             onGetTopTracks();
+        });
+
+        getArtistsBtn.setOnClickListener((v) -> {
+            onGetTopArtists();
         });
 
     }
@@ -185,7 +188,6 @@ public class MainActivity extends AppCompatActivity {
                     final JSONObject jsonObject = new JSONObject(response.body().string());
                     //setTextAsync(jsonObject.toString(3), profileTextView);
 
-
                     String nameString = jsonObject.getString("display_name");
                     setTextAsync(nameString, displayName);
                     /*
@@ -219,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Create a request to get the user profile
         final Request request = new Request.Builder()
-                .url("https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=20&offset=0")
+                .url("https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=10&offset=0")
                 .addHeader("Authorization", "Bearer " + mAccessToken)
                 .build();
 
@@ -239,29 +241,14 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     final JSONObject jsonObject = new JSONObject(response.body().string());
                     //setTextAsync(jsonObject.toString(3), profileTextView);
-                    String songText = "";
+                    StringBuilder songText = new StringBuilder();
                     JSONArray items = jsonObject.getJSONArray("items");
                     for (int i = 0; i < items.length(); i++) {
                         songs.add(new Song((JSONObject) items.get(i)));
-                        songText += (i + 1) + ". " + songs.get(i).toString() + "\n";
+                        songText.append((i + 1)).append(". ").append(songs.get(i).toString()).append("\n");
                     }
-                    setTextAsync(songText, tokenTextView);
-                    /*
-                    String nameString = jsonObject.getString("display_name");
+                    setTextAsync(String.valueOf(songText), trackText);
 
-                    JSONArray images = jsonObject.getJSONArray("images");
-                    JSONObject imagesObj = images.getJSONObject(0);
-                    String imageURL = imagesObj.getString("url");
-                    URL url = new URL(imageURL);
-                    Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            avatar.setImageBitmap(bmp);
-                            displayName.setText(nameString);
-                        }
-                    });
-                    */
                 } catch (JSONException e) {
                     Log.d("JSON", "Failed to parse data: " + e);
                     Toast.makeText(MainActivity.this, "Failed to parse data, watch Logcat for more details",
@@ -279,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Create a request to get the user profile
         final Request request = new Request.Builder()
-                .url("https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=20&offset=0")
+                .url("https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=10&offset=0")
                 .addHeader("Authorization", "Bearer " + mAccessToken)
                 .build();
 
@@ -298,14 +285,13 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 try {
                     final JSONObject jsonObject = new JSONObject(response.body().string());
-                    setTextAsync(jsonObject.toString(3), profileTextView);
-                    String songText = "";
+                    StringBuilder artistText = new StringBuilder();
                     JSONArray items = jsonObject.getJSONArray("items");
                     for (int i = 0; i < items.length(); i++) {
-                        songs.add(new Song((JSONObject) items.get(i)));
-                        songText += (i + 1) + ". " + songs.get(i).toString() + "\n";
+                        artists.add(new Artist((JSONObject) items.get(i)));
+                        artistText.append((i + 1)).append(". ").append(artists.get(i).toString()).append("\n");
                     }
-                    setTextAsync(songText, tokenTextView);
+                    setTextAsync(String.valueOf(artistText), codeTextView);
                     /*
                     String nameString = jsonObject.getString("display_name");
 
