@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "447825334968",
+    "project_id": "crescendo-ab3b9",
+    "storage_bucket": "crescendo-ab3b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:447825334968:android:5b2d6d62a966e9206a1a4d",
+        "android_client_info": {
+          "package_name": "com.example.crescendo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "447825334968-b115r69gjur0vntncgf9sgoghcqt3vnr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.crescendo",
+            "certificate_hash": "2225cf80b87a40e4f09d3560c96663f05b1340c5"
+          }
+        },
+        {
+          "client_id": "447825334968-e9gmfipr27kn997nr8cgshhvlu99o9d6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6JpKyblxSTcZQ0OVC2kUO3a-WioEOwbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "447825334968-e9gmfipr27kn997nr8cgshhvlu99o9d6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
