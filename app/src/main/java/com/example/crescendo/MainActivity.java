@@ -36,6 +36,15 @@ public class MainActivity extends AppCompatActivity {
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(myIntent);
+            }
+        });
+
+        /*
+        signInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 signInRequest = BeginSignInRequest.builder()
                         .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
                                 .setSupported(true)
@@ -47,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                         .build();
             }
         });
-
+        */
     }
 
 
