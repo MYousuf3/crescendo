@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- ImageView for the background once we have background images -->
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:src="@drawable/your_background_image" -->
+<!--    android:scaleType="centerCrop" />-->
+
+    <!-- TextView in the center of the screen -->
+    <TextView
+        android:id="@+id/transitionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Transition Text"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:padding="16dp"  />
+
+</RelativeLayout>

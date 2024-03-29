@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF00FF">
+
+    <TextView
+        android:id="@+id/topSongsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your top songs"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <!-- Song 1 -->
+    <LinearLayout
+        android:id="@+id/song1Container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/topSongsTitle"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/songNumber1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="48sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/songThumbnail1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/songTitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Song 1"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="16dp" />
+    </LinearLayout>
+    <!-- Song 2 -->
+    <LinearLayout
+        android:id="@+id/song2Container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/song1Container"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/songNumber2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:textSize="48sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/songThumbnail2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/songTitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Song 2"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="16dp" />
+    </LinearLayout>
+
+    <!-- Song 3 -->
+    <LinearLayout
+        android:id="@+id/song3Container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/song2Container"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/songNumber3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:textSize="48sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/songThumbnail3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/songTitle3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Song 3"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="16dp" />
+    </LinearLayout>
+
+    <!-- Song 4 -->
+    <LinearLayout
+        android:id="@+id/song4Container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/song3Container"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/songNumber4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:textSize="48sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/songThumbnail4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/songTitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Song 4"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="16dp" />
+    </LinearLayout>
+
+    <!-- Song 5 -->
+    <LinearLayout
+        android:id="@+id/song5Container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/song4Container"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/songNumber5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:textSize="48sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/songThumbnail5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/songTitle5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Song 5"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="16dp" />
+    </LinearLayout>
+    <!-- Share button -->
+    <ImageButton
+        android:id="@+id/shareButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:src="@android:drawable/ic_menu_share" />
+
+    <!-- Share text -->
+    <TextView
+        android:id="@+id/shareText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Share this story"
+        android:layout_above="@id/shareButton"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFF" />
+</RelativeLayout>
