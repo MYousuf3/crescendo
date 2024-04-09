@@ -17,6 +17,9 @@ import android.widget.Toast;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.spotify.sdk.android.auth.AuthorizationClient;
 import com.spotify.sdk.android.auth.AuthorizationRequest;
 import com.spotify.sdk.android.auth.AuthorizationResponse;
@@ -51,6 +54,10 @@ public class MainActivity2 extends AppCompatActivity {
     private ArrayList<Song> songs;
     private ArrayList<Artist> artists;
 
+    FirebaseAuth auth;
+    FirebaseDatabase database;
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +74,14 @@ public class MainActivity2 extends AppCompatActivity {
         displayName = findViewById(R.id.displayName);
         songs = new ArrayList<>();
         artists = new ArrayList<>();
+
+        auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
+
+        if (currentUser != null) {
+            displayName.setText(currentUser.getDisplayName());
+        }
 
         // Initialize the buttons
         Button tokenBtn = (Button) findViewById(R.id.token_btn);
@@ -90,6 +105,9 @@ public class MainActivity2 extends AppCompatActivity {
                 GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(MainActivity2.this, gso);
 
                 mGoogleSignInClient.signOut();
+                FirebaseAuth.getInstance().signOut();
+                Intent myIntent = new Intent(MainActivity2.this, MainActivity.class);
+                startActivity(myIntent);
             }
         });
 
