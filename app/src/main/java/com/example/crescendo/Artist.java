@@ -37,4 +37,8 @@ public class Artist {
         return artistName;
     }
 
+    public String getImageURL() {
+        return imageURL;
+    }
+
 }

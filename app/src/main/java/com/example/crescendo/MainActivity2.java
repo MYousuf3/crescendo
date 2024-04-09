@@ -7,10 +7,16 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
+import android.view.View;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.spotify.sdk.android.auth.AuthorizationClient;
 import com.spotify.sdk.android.auth.AuthorizationRequest;
 import com.spotify.sdk.android.auth.AuthorizationResponse;
@@ -71,6 +77,21 @@ public class MainActivity2 extends AppCompatActivity {
         Button itemCodeBtn = (Button) findViewById(R.id.itemCodeButton);
         Button getItemBtn = (Button) findViewById(R.id.getItemButton);
         Button getArtistsBtn = (Button) findViewById(R.id.getArtists);
+        Button signOut = findViewById(R.id.signOut);
+
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestIdToken(CLIENT_ID)
+                        .requestEmail().build();
+
+                GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(MainActivity2.this, gso);
+
+                mGoogleSignInClient.signOut();
+            }
+        });
 
         // Set the click listeners for the buttons
 
@@ -111,6 +132,9 @@ public class MainActivity2 extends AppCompatActivity {
      * https://developer.spotify.com/documentation/general/guides/authorization-guide/
      */
     public void getToken() {
+        CookieSyncManager.createInstance(this);
+        CookieManager cookieManager = CookieManager.getInstance();
+        cookieManager.removeAllCookies(null);
         final AuthorizationRequest request = getAuthenticationRequest(AuthorizationResponse.Type.TOKEN, 0);
         AuthorizationClient.openLoginActivity(MainActivity2.this, AUTH_TOKEN_REQUEST_CODE, request);
     }
@@ -186,7 +210,7 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 try {
-                    final JSONObject jsonObject = new JSONObject(response.body().string());
+                    JSONObject jsonObject = new JSONObject(response.body().string());
                     //setTextAsync(jsonObject.toString(3), profileTextView);
 
                     String nameString = jsonObject.getString("display_name");
