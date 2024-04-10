@@ -19,9 +19,9 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_centerInParent="true"
+        android:layout_marginHorizontal="50dp"
         android:background="@android:color/darker_gray"
         android:gravity="center"
-        android:layout_marginHorizontal= "50dp"
         android:text="Play Your Wrapped"
         android:textSize="30sp" />
 

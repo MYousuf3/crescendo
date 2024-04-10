@@ -2,6 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="primary_button">#8EB897</color>
-    <color name="primary_text">#040403</color>
+    <color name="Cambridge_blue">#8EB897</color>
+    <color name="text_black">#040403</color>
+    <color name="secondary_color">#5B7553</color>
+    <color name="tea_green">#C3E8BD</color>
+    <color name="Celadon">#9DDBAD</color>
 </resources>
