@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -16,6 +18,7 @@ public class HomeActivity extends AppCompatActivity {
     FirebaseDatabase database;
     FirebaseAuth auth;
     TextView title;
+    Button signOut;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -26,6 +29,16 @@ public class HomeActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
         title = findViewById(R.id.title);
+        signOut = findViewById(R.id.signOutBtnHome);
+
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent myIntent = new Intent(HomeActivity.this, MainActivity.class);
+                startActivity(myIntent);
+            }
+        });
 
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {

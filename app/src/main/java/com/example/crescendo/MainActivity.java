@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
@@ -32,7 +33,12 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -65,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {
-            Intent myIntent = new Intent(MainActivity.this, MainActivity2.class);
+            Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
             startActivity(myIntent);
         }
 
@@ -108,8 +114,14 @@ public class MainActivity extends AppCompatActivity {
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
-                    startActivity(myIntent);
+                    if (task.isSuccessful()) {
+                        Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
+                        startActivity(myIntent);
+                    } else {
+                        Toast.makeText(MainActivity.this, "Error logging in", Toast.LENGTH_LONG).show();
+                        passwordEdit.setError("Password may be incorrect");
+                        passwordEdit.requestFocus();
+                    }
                 }
             });
         }
@@ -139,8 +151,23 @@ public class MainActivity extends AppCompatActivity {
                             System.out.println("not null user");
                             newUser.updateProfile(new UserProfileChangeRequest.Builder().setDisplayName(String.valueOf(nameEdit.getText())).build());
                         }
-                        Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
-                        startActivity(myIntent);
+                        HashMap<String, Object> map = new HashMap<>();
+                        map.put("id", newUser.getUid());
+                        map.put("name", nameEdit.getText());
+                        map.put("wraps", new Archive(new LinkedList<>()));
+                        database.getReference().child("users").child(newUser.getUid()).setValue(map.toString());
+                        Toast.makeText(MainActivity.this, "Account Registered", Toast.LENGTH_LONG).show();
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
+                                startActivity(myIntent);
+                                finish();
+                            }
+                        },1000);
+                    } else {
+                        Toast.makeText(MainActivity.this, "Error creating account", Toast.LENGTH_LONG).show();
                     }
                 }
             });
