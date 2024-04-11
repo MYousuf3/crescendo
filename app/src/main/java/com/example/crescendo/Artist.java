@@ -32,8 +32,6 @@ public class Artist {
 
     @NonNull
     public String toString() {
-        if (genres.size() > 0)
-            return artistName + ", " + genres.get(0);
         return artistName;
     }
 

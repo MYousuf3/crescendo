@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class SongActivity extends AppCompatActivity {
 
-    private int songNumber = 5; // Starting with song number 5
+    private int songNumber = 4; // Starting with the index of the 5th song
     private TextView songNameView;
     private TextView songArtistView;
     private ImageView songImageView;
+    private List<Song> topSongs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +27,13 @@ public class SongActivity extends AppCompatActivity {
         songArtistView = findViewById(R.id.songArtist);
         songImageView = findViewById(R.id.songImage);
 
+        // Get the top songs list from HomeActivity
+        topSongs = HomeActivity.topSongs;
+
         findViewById(R.id.songView).setOnClickListener(view -> {
             songNumber--;
-            if (songNumber > 0) {
-                // Refresh the view or create a new activity for the next song
+            if (songNumber >= 0) {
+                // Refresh the view with the next song
                 displaySong(songNumber);
             } else {
                 Intent intent = new Intent(SongActivity.this, TopSongsActivity.class);
@@ -36,20 +42,23 @@ public class SongActivity extends AppCompatActivity {
             }
         });
 
-        // Display the initial song details
-        displaySong(songNumber);
+        // Display the initial song details if the list is not empty
+        if (!topSongs.isEmpty()) {
+            displaySong(songNumber);
+        }
     }
 
     private void displaySong(int songNumber) {
-        // Example data to simulate a song
-        String songName = "Test Song " + songNumber;
-        String artists = "Test Artist ";
+        Song song = topSongs.get(songNumber);
+        String songName = song.songName;
+        String artists = song.artists.get(0); // Assuming there is at least one artist
 
-        // Update the UI with the test song details
+        // Update the UI with the song details
         songNameView.setText(songName);
         songArtistView.setText(artists);
 
-        // Set a test image for the album
-        songImageView.setImageResource(R.drawable.ic_launcher_background); //will use spotify api once we test navigation
+        // For now, using a placeholder image for the album
+        // In future, you can load the image from the song's imageURL
+        songImageView.setImageResource(R.drawable.ic_launcher_background);
     }
 }
