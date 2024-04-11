@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/tea_green">
 
     <!-- Title: Welcome Name -->
+
+    <!-- Big Box: Play Your Wrapped -->
+
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome Name"
-        android:textSize="24sp"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginStart="109dp"
+        android:layout_marginTop="16dp"
+        android:text="Welcome Name"
+        android:textColor="@color/text_black"
+        android:textSize="24sp" />
 
-    <!-- Big Box: Play Your Wrapped -->
+    <!-- Hidden Scroll View -->
     <TextView
         android:id="@+id/playWrappedButton"
         android:layout_width="match_parent"
@@ -21,11 +27,12 @@
         android:layout_centerInParent="true"
         android:layout_marginHorizontal="50dp"
         android:background="@android:color/darker_gray"
+        android:backgroundTint="@color/Cambridge_blue"
         android:gravity="center"
         android:text="Play Your Wrapped"
+        android:textColor="@color/text_black"
         android:textSize="30sp" />
 
-    <!-- Hidden Scroll View -->
     <ScrollView
         android:id="@+id/hiddenScrollView"
         android:layout_width="match_parent"
@@ -42,13 +49,14 @@
     </ScrollView>
 
     <!-- Settings Icon -->
+
     <ImageView
         android:id="@+id/settingsIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/settings"
+        android:layout_width="74dp"
+        android:layout_height="58dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginEnd="-1dp"
+        android:src="@drawable/settings" />
 
     <Button
         android:id="@+id/signOutBtnHome"
@@ -56,8 +64,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/title"
         android:layout_alignEnd="@+id/title"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="55dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="145dp"
         android:text="Sign Out" />
 
 </RelativeLayout>
