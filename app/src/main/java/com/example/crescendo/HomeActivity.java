@@ -76,7 +76,6 @@ public class HomeActivity extends AppCompatActivity {
         if (currentUser != null) {
             title.setText("Welcome " + currentUser.getDisplayName());
         }
-
         signOut = findViewById(R.id.signOutBtnHome);
         findViewById(R.id.playWrappedButton).setOnClickListener(view -> authenticateSpotify());
         signOut.setOnClickListener(new View.OnClickListener() {
