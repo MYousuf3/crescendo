@@ -7,36 +7,48 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
 public class TopSongsActivity extends AppCompatActivity {
+
+    private List<Song> topSongs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_songs);
 
-        // Set up song details
+        // Assume topSongs is populated from somewhere, like HomeActivity
+        topSongs = HomeActivity.topSongs;
+
         setupSongDetails();
 
-        // Set up a click listener for the whole layout
         findViewById(R.id.topSongsLayout).setOnClickListener(view -> goToTransitionActivity());
     }
 
     private void setupSongDetails() {
-        // Set the song titles and images
-        ((TextView) findViewById(R.id.songTitle1)).setText("Song 1");
-        ((ImageView) findViewById(R.id.songThumbnail1)).setImageResource(R.drawable.ic_launcher_background);
+        if (topSongs == null || topSongs.size() < 5) {
+            // Handle case where there are not enough songs
+            return;
+        }
 
-        ((TextView) findViewById(R.id.songTitle2)).setText("Song 2");
-        ((ImageView) findViewById(R.id.songThumbnail2)).setImageResource(R.drawable.ic_launcher_background);
+        // Loop through the first five songs and set their details
+        for (int i = 0; i < 5; i++) {
+            Song song = topSongs.get(i);
+            String songTitleId = "songTitle" + (i + 1);
+            String songThumbnailId = "songThumbnail" + (i + 1);
 
-        ((TextView) findViewById(R.id.songTitle3)).setText("Song 3");
-        ((ImageView) findViewById(R.id.songThumbnail3)).setImageResource(R.drawable.ic_launcher_background);
+            int titleResId = getResources().getIdentifier(songTitleId, "id", getPackageName());
+            int thumbnailResId = getResources().getIdentifier(songThumbnailId, "id", getPackageName());
 
-        ((TextView) findViewById(R.id.songTitle4)).setText("Song 4");
-        ((ImageView) findViewById(R.id.songThumbnail4)).setImageResource(R.drawable.ic_launcher_background);
+            TextView songTitleView = findViewById(titleResId);
+            ImageView songThumbnailView = findViewById(thumbnailResId);
 
-        ((TextView) findViewById(R.id.songTitle5)).setText("Song 5");
-        ((ImageView) findViewById(R.id.songThumbnail5)).setImageResource(R.drawable.ic_launcher_background);
+            songTitleView.setText(song.songName);
+            Picasso.get().load(song.getImageURL()).into(songThumbnailView);
+        }
     }
 
     private void goToTransitionActivity() {
