@@ -46,4 +46,16 @@ public class Artist {
     public String getImageURL() {
         return imageURL;
     }
+
+    public String getTagline() {
+        String tagline;
+        if (popularity >= 80) {
+            tagline = "A Hit Artist!";
+        } else if (popularity >= 50) {
+            tagline = "Trending Artist!";
+        } else {
+            tagline = "A Hidden Gem Artist!";
+        }
+        return tagline;
+    }
 }

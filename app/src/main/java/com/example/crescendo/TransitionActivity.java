@@ -34,6 +34,6 @@ public class TransitionActivity extends AppCompatActivity {
             }
             startActivity(intent);
             finish(); // Finish TransitionActivity
-        }, 3000); // Delay for 3 seconds
+        }, 2000); // Delay for 3 seconds
     }
 }
