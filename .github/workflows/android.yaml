@@ -8,11 +8,11 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
+
     - name: set up JDK 11
       uses: actions/setup-java@v3
       with:
@@ -22,8 +22,17 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+
     - name: Build with Gradle
       run: ./gradlew build
+
+    - name: Run Checkstyle
+      continue-on-error: true
+      run: |
+        ./gradlew checkstyleMain
+        if [ $? -ne 0 ]; then
+          echo "::warning ::Checkstyle violations detected."
+        fi
 
     - name: Check build status
       run: |
