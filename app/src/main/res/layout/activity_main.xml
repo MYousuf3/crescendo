@@ -5,15 +5,42 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tea_green"
+    android:background="@color/nice_black"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="215dp"
+        android:layout_height="179dp"
+        android:src="@mipmap/logo_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="405dp"
+        android:layout_height="207dp"
+        android:fontFamily="@font/metropolis"
+        android:gravity="center|center_vertical"
+        android:text="crescendo"
+        android:textColor="@color/calm_green"
+        android:textSize="66dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.263" />
 
     <Button
         android:id="@+id/signInBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/Cambridge_blue"
-        android:fontFamily="@font/helvetica"
+        android:backgroundTint="@color/calm_green"
+        android:fontFamily="@font/metropolis"
         android:text="Sign In"
         android:textColor="@color/text_black"
         app:iconTint="#0008EB"
@@ -21,76 +48,61 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.578" />
-
-    <Button
-        android:id="@+id/createAcntBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/Cambridge_blue"
-        android:fontFamily="@font/helvetica"
-        android:text="Create New Account"
-        android:textColor="@color/text_black"
-        app:iconTint="#0008EB"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInBtn"
-        app:layout_constraintVertical_bias="0.054" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="405dp"
-        android:layout_height="207dp"
-        android:fontFamily="@font/ananda"
-        android:gravity="center|center_vertical"
-        android:text="Crescendo"
-        android:textColor="@color/text_black"
-        android:textSize="88dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.03" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/passwordEdit"
-        android:layout_width="225dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:hint="Password"
-        android:password="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameEdit"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.756" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/usernameEdit"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/calm_green"
+        android:ellipsize="start"
+        android:fontFamily="@font/metropolis"
+        android:gravity="center_horizontal"
         android:hint="Email"
+        android:textColor="@color/calm_green"
+        android:textColorHint="@color/calm_green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.389" />
+        app:layout_constraintVertical_bias="0.499" />
 
-    <EditText
-        android:id="@+id/nameEdit"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/passwordEdit"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/usernameEdit"
-        app:layout_constraintEnd_toEndOf="@+id/usernameEdit"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/usernameEdit"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="1.0" />
+        android:layout_centerInParent="true"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/calm_green"
+        android:ellipsize="start"
+        android:fontFamily="@font/metropolis"
+        android:gravity="center_horizontal"
+        android:hint="Password"
+        android:password="true"
+        android:textColor="@color/calm_green"
+        android:textColorHint="@color/calm_green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameEdit"
+        app:layout_constraintVertical_bias="0.037" />
+
+    <Button
+        android:id="@+id/createAcntBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/nice_black"
+        android:fontFamily="@font/metropolis"
+        android:text="@string/newacc"
+        android:textColor="@color/calm_green"
+        app:iconTint="#0008EB"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInBtn"
+        app:layout_constraintVertical_bias="0.11" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
