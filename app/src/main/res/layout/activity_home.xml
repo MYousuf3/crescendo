@@ -2,24 +2,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tea_green">
+    android:background="@color/nice_black">
 
     <!-- Title: Welcome Name -->
 
     <!-- Big Box: Play Your Wrapped -->
 
+    <!-- Hidden Scroll View -->
+
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="109dp"
+        android:layout_width="289dp"
+        android:layout_height="143dp"
+        android:layout_above="@+id/playWrappedButton"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Welcome Name"
-        android:textColor="@color/text_black"
-        android:textSize="24sp" />
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="109dp"
+        android:layout_toStartOf="@+id/settingsIcon"
+        android:layout_toEndOf="@+id/hiddenScrollView"
+        android:fontFamily="@font/metropolis"
+        android:text="Welcome Name."
+        android:textColor="@color/calm_green"
+        android:textSize="50sp" />
 
-    <!-- Hidden Scroll View -->
     <TextView
         android:id="@+id/playWrappedButton"
         android:layout_width="match_parent"
@@ -27,11 +34,12 @@
         android:layout_centerVertical="true"
         android:layout_marginHorizontal="50dp"
         android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/Cambridge_blue"
+        android:backgroundTint="@color/calm_green"
+        android:fontFamily="@font/metropolis"
         android:gravity="center"
         android:text="Play Your Wrapped"
-        android:textColor="@color/text_black"
-        android:textSize="30sp" />
+        android:textColor="@color/nice_black"
+        android:textSize="60sp" />
 
     <ScrollView
         android:id="@+id/hiddenScrollView"
@@ -61,12 +69,20 @@
     <Button
         android:id="@+id/signOutBtnHome"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/title"
-        android:layout_alignEnd="@+id/title"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="145dp"
-        android:text="Sign Out" />
+        android:layout_height="50dp"
+        android:layout_above="@+id/playWrappedButton"
+        android:layout_below="@+id/settingsIcon"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="138dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="138dp"
+        android:layout_marginBottom="34dp"
+        android:layout_toEndOf="@+id/hiddenScrollView"
+        android:backgroundTint="@color/calm_green"
+        android:fontFamily="@font/metropolis"
+        android:text="Sign Out"
+        android:textColor="@color/nice_black"
+        android:textSize="20sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id = "@+id/previousWrap"
