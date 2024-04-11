@@ -16,36 +16,46 @@ public class Artist {
     String imageURL;
     int followers;
 
-    public Artist() {
-        this.artistName = "name";
-        this.popularity = 1;
-        this.genres = new ArrayList<String>();
-        genres.add("genre");
-        this.imageURL = "image";
-        this.followers = 2;
-    }
-
-    public Artist (JSONObject jsonObject) throws JSONException {
+    public Artist(JSONObject jsonObject) throws JSONException {
         genres = new ArrayList<>();
         artistName = jsonObject.getString("name");
+
         JSONArray images = jsonObject.getJSONArray("images");
-        JSONObject imageOne = (JSONObject) images.get(0);
-        imageURL = imageOne.getString("url");
+        if (images.length() > 0) {
+            JSONObject imageOne = images.getJSONObject(0);
+            imageURL = imageOne.getString("url");
+        } else {
+            imageURL = null; // No image available
+        }
+
         JSONArray genreList = jsonObject.getJSONArray("genres");
         for (int i = 0; i < genreList.length(); i++) {
-            genres.add((String) genreList.get(i));
+            genres.add(genreList.getString(i));
         }
+
         popularity = jsonObject.getInt("popularity");
         followers = jsonObject.getJSONObject("followers").getInt("total");
     }
 
     @NonNull
+    @Override
     public String toString() {
-        return artistName;
+        return artistName + (genres.size() > 0 ? ", " + genres.get(0) : "");
     }
 
     public String getImageURL() {
         return imageURL;
     }
 
+    public String getTagline() {
+        String tagline;
+        if (popularity >= 80) {
+            tagline = "A Hit Artist!";
+        } else if (popularity >= 50) {
+            tagline = "Trending Artist!";
+        } else {
+            tagline = "A Hidden Gem Artist!";
+        }
+        return tagline;
+    }
 }

@@ -2,9 +2,9 @@ package com.example.crescendo;
 
 import androidx.annotation.NonNull;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 import java.util.ArrayList;
 
@@ -16,36 +16,50 @@ public class Song {
     int popularity;
     String imageURL;
 
-    public Song() {
-        this.songName = "hi";
-        this.albumName = "albumName";
-        this.artists = new ArrayList<String>();
-        artists.add("test artist");
-        this.lengthMS = 1;
-        this.popularity = 2;
-        this.imageURL = "image";
-    }
-
-    public Song (JSONObject jsonObject) throws JSONException {
+    public Song(JSONObject jsonObject) throws JSONException {
         artists = new ArrayList<>();
+
         JSONObject album = jsonObject.getJSONObject("album");
         albumName = album.getString("name");
+
         JSONArray images = album.getJSONArray("images");
-        JSONObject imageOne = (JSONObject) images.get(0);
-        imageURL = imageOne.getString("url");
+        if (images.length() > 0) {
+            JSONObject imageOne = images.getJSONObject(0);
+            imageURL = imageOne.getString("url");
+        } else {
+            imageURL = null; // No image available
+        }
+
         JSONArray artistList = jsonObject.getJSONArray("artists");
         for (int i = 0; i < artistList.length(); i++) {
-            JSONObject artist = (JSONObject) artistList.get(i);
+            JSONObject artist = artistList.getJSONObject(i);
             artists.add(artist.getString("name"));
         }
+
         songName = jsonObject.getString("name");
         popularity = jsonObject.getInt("popularity");
         lengthMS = jsonObject.getInt("duration_ms");
     }
 
     @NonNull
+    @Override
     public String toString() {
-        return songName + " by " + artists.get(0);
+        return songName + " by " + (artists.isEmpty() ? "Unknown Artist" : artists.get(0));
     }
 
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public String getTagline() {
+        String tagline;
+        if (popularity >= 80) {
+            tagline = "A Hit Sensation!";
+        } else if (popularity >= 50) {
+            tagline = "Trending!";
+        } else {
+            tagline = "Discover Hidden Gems!";
+        }
+        return tagline;
+    }
 }
