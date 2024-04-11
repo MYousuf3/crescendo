@@ -75,6 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void createUser() {
         String email = String.valueOf(usernameEdit.getText());
         String password = String.valueOf(passwordEdit.getText());
+        String confirmPass = String.valueOf(confirmPasswordEdit.getText());
 
         if (nameEdit.getText().length() < 2) {
             nameEdit.setError("Please enter a name at least 2 characters long");
@@ -85,10 +86,12 @@ public class RegisterActivity extends AppCompatActivity {
         if (!isValidEmail(email)) {
             usernameEdit.setError("Please enter a valid email!");
             usernameEdit.requestFocus();
-        }
-        else if (password.length() < 6) {
+        } else if (password.length() < 6) {
             passwordEdit.setError("Password must be at least 6 characters!");
             passwordEdit.requestFocus();
+        } else if (confirmPass.isEmpty() || !confirmPass.equals(password)) {
+            confirmPasswordEdit.setError("Password and confirm password fields must match.");
+            confirmPasswordEdit.requestFocus();
         } else {
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
