@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -43,6 +44,8 @@ public class HomeActivity extends AppCompatActivity {
     public static ArrayList<Song> topSongs;
     public static ArrayList<Artist> topArtists;
 
+    Button signOut;
+
     private FirebaseAuth auth;
     private FirebaseDatabase database;
 
@@ -61,7 +64,16 @@ public class HomeActivity extends AppCompatActivity {
             title.setText("Welcome " + currentUser.getDisplayName());
         }
 
+        signOut = findViewById(R.id.signOutBtnHome);
         findViewById(R.id.playWrappedButton).setOnClickListener(view -> authenticateSpotify());
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent myIntent = new Intent(HomeActivity.this, MainActivity.class);
+                startActivity(myIntent);
+            }
+        });
     }
 
     private void authenticateSpotify() {
