@@ -8,7 +8,7 @@
     tools:context=".GameActivity">
 
     <TextView
-        android:id="@+id/ArtistName"
+        android:id="@+id/displayArtistNameTextView"
         android:layout_width="213dp"
         android:layout_height="74dp"
         android:text="ArtistName"
@@ -36,4 +36,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="20dp" />
+
+    <Button
+        android:id="@+id/showInputDialogButton"
+        android:layout_width="206dp"
+        android:layout_height="98dp"
+        android:text="Guess the Artist"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ArtistName"
+        app:layout_constraintVertical_bias="0.534" />
 </androidx.constraintlayout.widget.ConstraintLayout>
