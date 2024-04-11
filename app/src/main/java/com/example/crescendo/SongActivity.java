@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class SongActivity extends AppCompatActivity {
@@ -14,6 +16,7 @@ public class SongActivity extends AppCompatActivity {
     private int songNumber = 4; // Starting with the index of the 5th song
     private TextView songNameView;
     private TextView songArtistView;
+    private TextView songTaglineView;
     private ImageView songImageView;
     private List<Song> topSongs;
 
@@ -26,6 +29,7 @@ public class SongActivity extends AppCompatActivity {
         songNameView = findViewById(R.id.songName);
         songArtistView = findViewById(R.id.songArtist);
         songImageView = findViewById(R.id.songImage);
+        songTaglineView = findViewById(R.id.songTagline);
 
         // Get the top songs list from HomeActivity
         topSongs = HomeActivity.topSongs;
@@ -52,13 +56,18 @@ public class SongActivity extends AppCompatActivity {
         Song song = topSongs.get(songNumber);
         String songName = song.songName;
         String artists = song.artists.get(0); // Assuming there is at least one artist
+        String tagline = song.getTagline();
+        String imageUrl = song.getImageURL();
 
         // Update the UI with the song details
         songNameView.setText(songName);
         songArtistView.setText(artists);
-
+        songTaglineView.setText(tagline);
         // For now, using a placeholder image for the album
         // In future, you can load the image from the song's imageURL
-        songImageView.setImageResource(R.drawable.ic_launcher_background);
+        Picasso.get()
+                .load(imageUrl)
+                .placeholder(R.drawable.ic_launcher_background) // Placeholder image
+                .into(songImageView);
     }
 }
