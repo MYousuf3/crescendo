@@ -1,6 +1,8 @@
 package com.example.crescendo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -62,6 +64,7 @@ public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseFirestore database;
 
+    pastAdapter adapter;
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +78,15 @@ public class HomeActivity extends AppCompatActivity {
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {
             title.setText("Welcome " + currentUser.getDisplayName());
+            ArrayList<String> pastWrap = new ArrayList<>();
+            pastWrap.add("Wrap #1");
+            pastWrap.add("Wrap #2");
+
+            RecyclerView recyclerView = findViewById(R.id.previousWrap);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            adapter = new pastAdapter(this, pastWrap);
+            adapter.setClickListener((pastAdapter.ItemClickListener) this);
+            recyclerView.setAdapter(adapter);
         }
 
         signOut = findViewById(R.id.signOutBtnHome);
@@ -242,4 +254,6 @@ public class HomeActivity extends AppCompatActivity {
         }
         return artists;
     }
+
+
 }
