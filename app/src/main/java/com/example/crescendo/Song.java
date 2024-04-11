@@ -16,6 +16,16 @@ public class Song {
     int popularity;
     String imageURL;
 
+    public Song() {
+        this.songName = "hi";
+        this.albumName = "albumName";
+        this.artists = new ArrayList<String>();
+        artists.add("test artist");
+        this.lengthMS = 1;
+        this.popularity = 2;
+        this.imageURL = "image";
+    }
+
     public Song (JSONObject jsonObject) throws JSONException {
         artists = new ArrayList<>();
         JSONObject album = jsonObject.getJSONObject("album");

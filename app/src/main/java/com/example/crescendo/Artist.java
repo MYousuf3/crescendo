@@ -16,6 +16,15 @@ public class Artist {
     String imageURL;
     int followers;
 
+    public Artist() {
+        this.artistName = "name";
+        this.popularity = 1;
+        this.genres = new ArrayList<String>();
+        genres.add("genre");
+        this.imageURL = "image";
+        this.followers = 2;
+    }
+
     public Artist (JSONObject jsonObject) throws JSONException {
         genres = new ArrayList<>();
         artistName = jsonObject.getString("name");

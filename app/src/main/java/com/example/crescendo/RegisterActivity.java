@@ -26,6 +26,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.checkerframework.checker.units.qual.A;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -99,7 +102,15 @@ public class RegisterActivity extends AppCompatActivity {
                         HashMap<String, Object> map = new HashMap<>();
                         map.put("id", newUser.getUid());
                         map.put("name", nameEdit.getText());
-                        map.put("wraps", new Archive(new LinkedList<>()));
+                        ArrayList<Song> songs = new ArrayList<>();
+                        ArrayList<Artist> artists = new ArrayList<>();
+                        songs.add(new Song());
+                        artists.add(new Artist());
+                        Wrap wrap = new Wrap(songs, artists);
+                        LinkedList<Wrap> wraps = new LinkedList<>();
+                        wraps.add(wrap);
+                        Archive archive = new Archive(wraps);
+                        map.put("wraps", archive);
                         database.collection("users").add(map);
                         Toast.makeText(RegisterActivity.this, "Account Registered", Toast.LENGTH_LONG).show();
                         Handler handler = new Handler();
