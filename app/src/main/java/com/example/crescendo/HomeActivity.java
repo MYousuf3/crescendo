@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -60,6 +61,7 @@ public class HomeActivity extends AppCompatActivity {
     public static ArrayList<Artist> topArtists;
 
     Button signOut;
+    ImageView settings;
 
     private FirebaseAuth auth;
     private FirebaseFirestore database;
@@ -73,6 +75,7 @@ public class HomeActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseFirestore.getInstance();
+        settings = findViewById(R.id.settingsIcon);
 
         title = findViewById(R.id.title);
         FirebaseUser currentUser = auth.getCurrentUser();
@@ -88,7 +91,6 @@ public class HomeActivity extends AppCompatActivity {
             adapter.setClickListener((pastAdapter.ItemClickListener) this);
             recyclerView.setAdapter(adapter);
         }
-
         signOut = findViewById(R.id.signOutBtnHome);
         findViewById(R.id.playWrappedButton).setOnClickListener(view -> authenticateSpotify());
         signOut.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +99,14 @@ public class HomeActivity extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 Intent myIntent = new Intent(HomeActivity.this, MainActivity.class);
                 startActivity(myIntent);
+            }
+        });
+
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+                startActivity(intent);
             }
         });
     }

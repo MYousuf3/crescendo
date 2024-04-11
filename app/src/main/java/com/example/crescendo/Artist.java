@@ -43,6 +43,10 @@ public class Artist {
         return artistName + (genres.size() > 0 ? ", " + genres.get(0) : "");
     }
 
+    public String getArtistName() {
+        return artistName;
+    }
+
     public String getImageURL() {
         return imageURL;
     }
