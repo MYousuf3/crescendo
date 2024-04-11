@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tea_green"
+    android:background="@color/nice_black"
     tools:context=".GameActivity">
 
     <TextView
@@ -13,6 +13,7 @@
         android:layout_height="74dp"
         android:text="ArtistName"
         android:textAlignment="center"
+        android:textColor="@color/tea_green"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,8 +23,9 @@
 
     <ImageView
         android:id="@+id/avatarImageView"
-        android:layout_width="205dp"
-        android:layout_height="210dp"
+        android:layout_width="235dp"
+        android:layout_height="381dp"
+        android:layout_marginTop="72dp"
         app:layout_constraintBottom_toTopOf="@+id/ArtistName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,14 +41,32 @@
 
     <Button
         android:id="@+id/showInputDialogButton"
-        android:layout_width="206dp"
-        android:layout_height="98dp"
+        android:layout_width="147dp"
+        android:layout_height="113dp"
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="@color/secondary_color"
         android:text="Guess the Artist"
+        android:textColor="@color/tea_green"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ArtistName"
-        app:layout_constraintVertical_bias="0.534" />
+        app:layout_constraintTop_toBottomOf="@+id/displayArtistNameTextView"
+        app:layout_constraintVertical_bias="0.91" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="147dp"
+        android:layout_height="113dp"
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="@color/secondary_color"
+        android:text="Enter A Letter"
+        android:textColor="@color/tea_green"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/showInputDialogButton"
+        app:layout_constraintTop_toBottomOf="@+id/displayArtistNameTextView"
+        app:layout_constraintVertical_bias="0.91" />
 </androidx.constraintlayout.widget.ConstraintLayout>
