@@ -1,31 +1,39 @@
 package com.example.crescendo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
 public class ArtistActivity extends AppCompatActivity {
 
-    private int artistNumber = 5; // Starting with artist number 5
+    private int artistNumber = 4; // Starting with the index of the 5th artist
     private TextView artistNameView;
+    private TextView artistTaglineView;
     private ImageView artistImageView;
+    private List<Artist> topArtists;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_artist);
 
-        // Initialize the TextView and ImageView
         artistNameView = findViewById(R.id.artistName);
+        artistTaglineView = findViewById(R.id.artistTagline);
         artistImageView = findViewById(R.id.artistImage);
+
+        // Assuming topArtists is populated from HomeActivity
+        topArtists = HomeActivity.topArtists;
 
         findViewById(R.id.artistView).setOnClickListener(view -> {
             artistNumber--;
-            if (artistNumber > 0) {
-                // Refresh the view or create a new activity for the next artist
+            if (artistNumber >= 0) {
                 displayArtist(artistNumber);
             } else {
                 Intent intent = new Intent(ArtistActivity.this, TopArtistsActivity.class);
@@ -34,18 +42,27 @@ public class ArtistActivity extends AppCompatActivity {
             }
         });
 
-        // Display the initial artist details
-        displayArtist(artistNumber);
+        if (!topArtists.isEmpty()) {
+            displayArtist(artistNumber);
+        }
     }
 
-    private void displayArtist(int artistNumber) {
-        // Example data to simulate an artist
-        String artistName = "Test Artist " + artistNumber;
+    private void displayArtist(int artistIndex) {
+        if (artistIndex < 0 || artistIndex >= topArtists.size()) {
+            return; // Index out of bounds, return early
+        }
 
-        // Update the UI with the test artist details
+        Artist artist = topArtists.get(artistIndex);
+        String artistName = artist.artistName;
+        String tagline = artist.getTagline();
+        String imageUrl = artist.getImageURL();
+
         artistNameView.setText(artistName);
+        artistTaglineView.setText(tagline);
 
-        // Set a test image for the artist
-        artistImageView.setImageResource(R.drawable.ic_launcher_background); // will use actual data once we test navigation
+        Picasso.get()
+                .load(imageUrl)
+                .placeholder(R.drawable.ic_launcher_background) // Placeholder image
+                .into(artistImageView);
     }
 }
