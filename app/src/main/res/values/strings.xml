@@ -6,8 +6,8 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-    <string name="newacc"><u>Don't have an account?</u></string>
-    <string name="alrdyacc"><u>Already have an account?</u></string>
+    <string name="newacc">Don\'t have an account?</string>
+    <string name="alrdyacc">Already have an account?</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
