@@ -236,6 +236,8 @@ public class MainActivity2 extends AppCompatActivity {
                     /*
                     JSONArray images = jsonObject.getJSONArray("images");
                     JSONObject imagesObj = images.getJSONObject(0);
+
+
                     String imageURL = imagesObj.getString("url");
                     URL url = new URL(imageURL);
                     Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());

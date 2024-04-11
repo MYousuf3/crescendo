@@ -33,6 +33,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONObject;
 
@@ -48,13 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText usernameEdit, passwordEdit, nameEdit;
     FirebaseAuth auth;
-    FirebaseDatabase database;
-    GoogleSignInClient mGoogleSignInClient;
-
-    public static final String CLIENT_ID = "447825334968-e9gmfipr27kn997nr8cgshhvlu99o9d6.apps.googleusercontent.com";
-    private static final int REQ_ONE_TAP = 2;  // Can be any integer unique to the Activity.
-    private boolean showOneTapUI = true;
-    int RC_SIGN_IN = 28;
+    FirebaseFirestore database;
 
 
     @SuppressLint("MissingInflatedId")
@@ -69,22 +64,13 @@ public class MainActivity extends AppCompatActivity {
         passwordEdit = findViewById(R.id.passwordEdit);
         nameEdit = findViewById(R.id.nameEdit);
         auth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance();
+        database = FirebaseFirestore.getInstance();
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {
             Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
             startActivity(myIntent);
         }
 
-
-
-        /*
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(CLIENT_ID)
-                .requestEmail().build();
-
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-         */
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,11 +117,14 @@ public class MainActivity extends AppCompatActivity {
     private void createUser() {
         String email = String.valueOf(usernameEdit.getText());
         String password = String.valueOf(passwordEdit.getText());
+
         if (nameEdit.getText().length() < 2) {
             nameEdit.setError("Please enter a name at least 2 characters long");
             nameEdit.requestFocus();
         }
-        else if (!isValidEmail(email)) {
+
+
+        if (!isValidEmail(email)) {
             usernameEdit.setError("Please enter a valid email!");
             usernameEdit.requestFocus();
         }
@@ -156,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                         map.put("id", newUser.getUid());
                         map.put("name", nameEdit.getText());
                         map.put("wraps", new Archive(new LinkedList<>()));
-                        database.getReference().child("users").child(newUser.getUid()).setValue(map.toString());
+                        database.collection("users").add(map);
                         Toast.makeText(MainActivity.this, "Account Registered", Toast.LENGTH_LONG).show();
                         Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
@@ -175,55 +164,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /*
-    private void googleSignIn() {
-        Intent intent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(intent, RC_SIGN_IN);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuth(account.getIdToken());
-            }
-            catch(Exception e) {
-                System.out.println(e.getMessage());
-                Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-
-    private void firebaseAuth(String idToken) {
-        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
-        auth.signInWithCredential(credential)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = auth.getCurrentUser();
-                            HashMap<String, Object> map = new HashMap<>();
-                            map.put("id", user.getUid());
-                            map.put("name", user.getDisplayName());
-                            map.put("profile", user.getPhotoUrl().toString());
-
-                            database.getReference().child("users").child(user.getUid()).setValue(map);
-
-                            Intent myIntent = new Intent(MainActivity.this, MainActivity2.class);
-                            startActivity(myIntent);
-
-                        } else {
-                            Toast.makeText(MainActivity.this, "something went wrong", Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
-    }
-     */
 
     public static boolean isValidEmail(CharSequence target) {
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
