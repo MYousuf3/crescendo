@@ -43,7 +43,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements pastAdapter.ItemClickListener{
 
     private static final String CLIENT_ID = "1afb806ef1504ef4b8b84d4329a66932";
     private static final String REDIRECT_URI = "crescendo://auth";
@@ -77,6 +77,7 @@ public class HomeActivity extends AppCompatActivity {
         database = FirebaseFirestore.getInstance();
         settings = findViewById(R.id.settingsIcon);
 
+
         title = findViewById(R.id.title);
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {
@@ -84,23 +85,13 @@ public class HomeActivity extends AppCompatActivity {
             ArrayList<String> pastWrap = new ArrayList<>();
             pastWrap.add("Wrap #1");
             pastWrap.add("Wrap #2");
-
             RecyclerView recyclerView = findViewById(R.id.previousWrap);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             adapter = new pastAdapter(this, pastWrap);
-            adapter.setClickListener((pastAdapter.ItemClickListener) this);
+            adapter.setClickListener(this);
             recyclerView.setAdapter(adapter);
         }
-        signOut = findViewById(R.id.signOutBtnHome);
         findViewById(R.id.playWrappedButton).setOnClickListener(view -> authenticateSpotify());
-        signOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent myIntent = new Intent(HomeActivity.this, MainActivity.class);
-                startActivity(myIntent);
-            }
-        });
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -266,4 +257,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemClick(View view, int position) {
+        System.out.println("hi" + position);
+    }
 }

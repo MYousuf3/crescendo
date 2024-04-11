@@ -86,7 +86,7 @@ public class RegisterActivity extends AppCompatActivity {
         String confirmPass = String.valueOf(confirmPasswordEdit.getText());
 
         if (nameEdit.getText().length() < 2) {
-            nameEdit.setError("Please enter a name at least 2 characters long");
+            nameEdit.setError("Please enter a name at least 2 characters long.");
             nameEdit.requestFocus();
         }
         if (!isValidEmail(email)) {
