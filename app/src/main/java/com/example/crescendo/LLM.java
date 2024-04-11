@@ -66,8 +66,7 @@ public class LLM {
     Thread thread = new Thread(new Runnable() {
         @Override
         public void run() {
-            System.out.println(LLM.chatGPT("Drake, Kendrick Lamar, Kanye"));
-
+            String similarArtists = (LLM.chatGPT("Drake, Kendrick Lamar, Kanye"));
         }
     });
     thread.start();

@@ -17,6 +17,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import android.widget.Toast;
 
 
@@ -24,6 +25,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -108,51 +110,11 @@ public class RegisterActivity extends AppCompatActivity {
                         HashMap<String, Object> map = new HashMap<>();
                         map.put("id", newUser.getUid());
                         map.put("name", nameEdit.getText().toString());
-                        // Create an empty JSONObject
-
-                        //This makes a dummy json object while we dont have the spotify information.
-                        JSONObject jsonObject = new JSONObject();
-                        JSONObject jsonObject1 = new JSONObject();
-                        JSONObject jsonObject2 = new JSONObject();
-                        try {
-                            jsonObject.put("key1", "hi");
-                            jsonObject1.put("key1", "hi");
-                            jsonObject2.put("obj1", jsonObject1);
-                            jsonObject2.put("obj0", jsonObject);
-                            // Empty string value
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
-                        map.put("wraps", jsonObject2.toString());
+                        JSONArray jsonArray = new JSONArray();
+                        map.put("wraps", jsonArray.toString());
                         database.collection("users").add(map);
                         Toast.makeText(RegisterActivity.this, "Account Registered", Toast.LENGTH_LONG).show();
 
-                        //CODE TO RETRIEVE INFORMATION FROM FIREBASE
-                        /*
-                        database.collection("users")
-                                .get()
-                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                        if (task.isSuccessful()) {
-                                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                                if (document.get("id").equals(newUser.getUid())) {
-                                                    String strJson = (String) document.get("wraps");
-                                                    try {
-                                                        JSONObject newJSON = new JSONObject(strJson);
-                                                        System.out.println(newJSON.getJSONObject("obj1").get("key1"));
-                                                    } catch (JSONException e) {
-                                                        throw new RuntimeException(e);
-                                                    }
-                                                }
-                                            }
-                                        } else {
-                                            System.out.println("Error getting documents." + task.getException());
-                                        }
-                                    }
-                                });
-
-                         */
                         Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
                             @Override
@@ -161,7 +123,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 startActivity(myIntent);
                                 finish();
                             }
-                        },1000);
+                        },1500);
                     } else {
                         Toast.makeText(RegisterActivity.this, "Error creating account", Toast.LENGTH_LONG).show();
                     }
