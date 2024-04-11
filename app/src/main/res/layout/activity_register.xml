@@ -44,18 +44,17 @@
         app:layout_constraintTop_toBottomOf="@+id/usernameEdit"
         app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/nameEdit"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_marginTop="4dp"
         android:backgroundTint="@color/calm_green"
         android:ellipsize="start"
-        android:ems="10"
         android:fontFamily="@font/metropolis"
         android:gravity="center_horizontal"
         android:hint="Name"
-        android:inputType="text"
         android:textColor="@color/calm_green"
         android:textColorHint="@color/calm_green"
         app:layout_constraintBottom_toTopOf="@+id/usernameEdit"
