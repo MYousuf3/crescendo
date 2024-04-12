@@ -3,17 +3,17 @@
     android:id="@+id/topArtistsLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF00FF">
+    android:background="#67CA71">
 
     <TextView
         android:id="@+id/topArtistsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:text="Your top artists"
         android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:textSize="24sp" />
 
     <!-- Song 1 -->
     <LinearLayout
@@ -22,16 +22,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/topArtistsTitle"
         android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/artistNumber1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"
-            android:textSize="48sp"
             android:textColor="#FFFFFF"
+            android:textSize="48sp"
             android:textStyle="bold" />
 
         <ImageView
@@ -45,10 +45,10 @@
             android:id="@+id/artistTitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="artist 1"
-            android:textSize="18sp"
             android:textColor="#FFFFFF"
-            android:layout_marginStart="16dp" />
+            android:textSize="18sp" />
     </LinearLayout>
     <!-- Song 2 -->
     <LinearLayout
@@ -56,16 +56,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/artist1Container"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/artistNumber2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2"
-            android:textSize="48sp"
             android:textColor="#FFFFFF"
+            android:textSize="48sp"
             android:textStyle="bold" />
 
         <ImageView
@@ -79,10 +79,10 @@
             android:id="@+id/artistTitle2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="artist 2"
-            android:textSize="18sp"
             android:textColor="#FFFFFF"
-            android:layout_marginStart="16dp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
     <!-- Song 3 -->
@@ -91,16 +91,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/artist2Container"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/artistNumber3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3"
-            android:textSize="48sp"
             android:textColor="#FFFFFF"
+            android:textSize="48sp"
             android:textStyle="bold" />
 
         <ImageView
@@ -114,10 +114,10 @@
             android:id="@+id/artistTitle3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="Artist 3"
-            android:textSize="18sp"
             android:textColor="#FFFFFF"
-            android:layout_marginStart="16dp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
     <!-- Song 4 -->
@@ -126,16 +126,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/artist3Container"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/artistNumber4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4"
-            android:textSize="48sp"
             android:textColor="#FFFFFF"
+            android:textSize="48sp"
             android:textStyle="bold" />
 
         <ImageView
@@ -149,10 +149,10 @@
             android:id="@+id/artistTitle4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="Artist 4"
-            android:textSize="18sp"
             android:textColor="#FFFFFF"
-            android:layout_marginStart="16dp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
     <!-- Song 5 -->
@@ -161,16 +161,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/artist4Container"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/artistNumber5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="5"
-            android:textSize="48sp"
             android:textColor="#FFFFFF"
+            android:textSize="48sp"
             android:textStyle="bold" />
 
         <ImageView
@@ -184,10 +184,10 @@
             android:id="@+id/artistTitle5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="Artist 5"
-            android:textSize="18sp"
             android:textColor="#FFFFFF"
-            android:layout_marginStart="16dp" />
+            android:textSize="18sp" />
     </LinearLayout>
     <!-- Share button -->
     <ImageButton
@@ -205,8 +205,8 @@
         android:id="@+id/shareText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Share this story"
         android:layout_above="@id/shareButton"
         android:layout_centerHorizontal="true"
+        android:text="Share this story"
         android:textColor="#FFFFFF" />
 </RelativeLayout>
