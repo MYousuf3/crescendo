@@ -2,9 +2,11 @@ package com.example.crescendo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -39,6 +41,8 @@ public class TransitionActivity extends AppCompatActivity {
 
 
         transitionText.setText(quip);
+        animateViewDownwards(transitionText);
+
 
         new Handler().postDelayed(() -> {
             Intent intent;
@@ -58,5 +62,10 @@ public class TransitionActivity extends AppCompatActivity {
             startActivity(intent);
             finish(); // Finish TransitionActivity
         }, 2000); // Delay for 3 seconds
+    }
+    private void animateViewDownwards(View view) {
+        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationY", 0f, 1200f);
+        animator.setDuration(1900); // Set the duration of the animation in milliseconds (1 second in this case)
+        animator.start();
     }
 }
