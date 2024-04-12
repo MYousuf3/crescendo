@@ -31,7 +31,7 @@ public class ArtistActivity extends AppCompatActivity {
         artistImageView = findViewById(R.id.artistImage);
 
         // Assuming topArtists is populated from HomeActivity
-
+        topArtists = HomeActivity.topArtists;
 
         findViewById(R.id.artistView).setOnClickListener(view -> {
             artistNumber--;

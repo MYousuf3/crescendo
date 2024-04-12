@@ -17,11 +17,13 @@ public class GenresActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_genres); // Use the actual layout file name
 
-        setupGenreDetails();
+
 
         topArtists = HomeActivity.topArtists;
         freqTable = new FrequencyTable<>(topArtists);
         topGenre = freqTable.getFavoriteGenre();
+
+        setupGenreDetails();
 
         // Set the entire view as clickable to navigate back to the HomeActivity
         findViewById(R.id.backgroundImage).setOnClickListener(view -> goToHomeActivity());
