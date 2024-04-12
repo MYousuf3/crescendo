@@ -7,10 +7,14 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class LLM {
+    static String apiKey = "PLACEHOLDER";
+    static boolean keyIn = false;
     static BufferedReader br;
     public static String chatGPT(String prompt) {
+        if (!keyIn) {
+            return "API KEY NOT IN";
+        }
         String url = "https://api.openai.com/v1/chat/completions";
-        String apiKey = "PLACE HOLDER";
         String model = "gpt-3.5-turbo";
 
         try {
@@ -54,18 +58,20 @@ public class LLM {
     }
 
     public static String chatGPTTaste(ArrayList<Artist> artists) {
+        if (!keyIn) {
+            return "API KEY NOT IN";
+        }
         StringBuilder artistNames = new StringBuilder();
         for (int i = 0; i < 6; i++) {
             artistNames.append(artists.get(i).getArtistName()).append(", ");
         }
 
         String url = "https://api.openai.com/v1/chat/completions";
-        String apiKey = "REPLACE WITH REAL KEY WHEN READY";
         String model = "gpt-3.5-turbo";
 
         try {
             URL obj = new URL(url);
-            String question = "Given the following artists, describe my taste in music. Answer starting with 'Your taste in music is'. DO NOT STRAY FROM THIS FORMAT. After the taste, tell me my 'musical spirit animal'. " + artistNames;
+            String question = "Given the following artists, describe my taste in music. Answer starting with 'Your taste in music is'. DO NOT STRAY FROM THIS FORMAT. After the taste, tell me my 'musical spirit animal'. ANSWER IN LESS THAN 60 WORDS:" + artistNames;
             HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Authorization", "Bearer " + apiKey);

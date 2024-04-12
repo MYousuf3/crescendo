@@ -3,31 +3,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/backgroundtemp4"
     android:id="@+id/artistView">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="170dp" />
 
     <ImageView
         android:id="@+id/artistImage"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_width="210dp"
+        android:layout_height="220dp"
+        android:layout_gravity="center"
+        android:foregroundGravity="center"
         android:scaleType="centerCrop" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="130dp" />
 
     <TextView
         android:id="@+id/artistName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Artist Name"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/metropolis"
         android:gravity="center"
-        android:layout_marginTop="16dp" />
+        android:text="Artist Name"
+        android:textColor="#760000"
+        android:textSize="45sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/artistTagline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Artist Tagline or Description"
-        android:textSize="16sp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
-        android:layout_marginTop="16dp" />
+        android:text="Artist Tagline or Description"
+        android:textColor="#760000"
+        android:textSize="16sp" />
 
 </LinearLayout>

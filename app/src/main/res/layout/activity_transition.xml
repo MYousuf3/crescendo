@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/transition_template"
+    android:backgroundTint="#770E9B"
+    android:backgroundTintMode="add">
 
     <!-- ImageView for the background once we have background images -->
     <!--    <ImageView-->
@@ -15,10 +20,14 @@
         android:id="@+id/transitionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Transition Text"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="148dp"
+        android:fontFamily="@font/metropolis"
         android:gravity="center"
-        android:textSize="24sp"
-        android:padding="16dp"  />
+        android:padding="16dp"
+        android:text="Transition Text"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

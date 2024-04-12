@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/nice_black">
@@ -12,34 +14,19 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="289dp"
-        android:layout_height="143dp"
-        android:layout_above="@+id/playWrappedButton"
+        android:layout_width="309dp"
+        android:layout_height="128dp"
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="109dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="122dp"
         android:layout_toStartOf="@+id/settingsIcon"
         android:layout_toEndOf="@+id/hiddenScrollView"
         android:fontFamily="@font/metropolis"
         android:text="Welcome Name."
         android:textColor="@color/calm_green"
         android:textSize="50sp" />
-
-    <TextView
-        android:id="@+id/playWrappedButton"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_centerVertical="true"
-        android:layout_marginHorizontal="50dp"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@color/calm_green"
-        android:fontFamily="@font/metropolis"
-        android:gravity="center"
-        android:text="Play Your Wrapped"
-        android:textColor="@color/nice_black"
-        android:textSize="60sp" />
 
     <ScrollView
         android:id="@+id/hiddenScrollView"
@@ -62,21 +49,66 @@
         android:id="@+id/settingsIcon"
         android:layout_width="74dp"
         android:layout_height="58dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="-1dp"
-        android:src="@drawable/settings" />
+        android:backgroundTint="#2EFF00"
+        android:foregroundTint="#11FA00"
+        android:src="@drawable/settings"
+        app:tint="@color/calm_green" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/previousWrap"
         android:layout_width="wrap_content"
         android:layout_height="168dp"
-        android:layout_below="@+id/playWrappedButton"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="50dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="223dp">
+
+        <ImageView
+            android:id="@+id/playButton"
+            android:layout_width="204dp"
+            android:layout_height="172dp"
+            android:layout_marginStart="141dp"
+            android:layout_marginTop="189dp"
+            android:layout_marginEnd="142dp"
+            android:animation="@anim/rotate"
+            android:layout_marginBottom="83dp"
+            android:src="@drawable/spotify_cd"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+             />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="132dp"
+            android:layout_height="45dp"
+            android:background="@color/calm_green"
+            android:entries="@array/spinner_items"
+            android:fontFamily="@font/metropolis"
+            android:gravity="center"
+            android:popupBackground="@color/calm_green"
+            android:textAlignment="center"
+            android:textColor="@color/nice_black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+
+            app:layout_constraintBottom_toTopOf="@+id/playButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>

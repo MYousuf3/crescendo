@@ -51,6 +51,8 @@ public class Artist {
         return imageURL;
     }
 
+    public ArrayList<String> getGenres() {return genres;}
+
     public String getTagline() {
         String tagline;
         if (popularity >= 80) {
@@ -61,5 +63,9 @@ public class Artist {
             tagline = "A Hidden Gem Artist!";
         }
         return tagline;
+    }
+
+    public int getFollowers() {
+        return followers;
     }
 }

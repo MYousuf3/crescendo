@@ -63,6 +63,12 @@ public class SettingsActivity extends AppCompatActivity {
                 user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
+                        try {
+                            FirebaseAuth.getInstance().signOut();
+                        }
+                        catch(Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                         Toast.makeText(SettingsActivity.this, "Account Deleted", Toast.LENGTH_SHORT).show();
                         Intent myIntent = new Intent(SettingsActivity.this, MainActivity.class);
                         startActivity(myIntent);
@@ -75,11 +81,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String newName = nameChange.getText().toString();
-                if (newName.length() > 2) {
-                    if (newName.length() > 9) {
-                        nameChange.setError("Please enter a name less than 10 characters long.");
-                        nameChange.requestFocus();
-                    }
+                if (newName.length() > 2 && newName.length() < 10) {
                     assert user != null;
                     if (!newName.equals(user.getDisplayName())) {
                         user.updateProfile(new UserProfileChangeRequest.Builder().setDisplayName(newName).build()).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -95,7 +97,7 @@ public class SettingsActivity extends AppCompatActivity {
                     }
                 } else {
                     nameChange.requestFocus();
-                    nameChange.setError("Name change must be at least 2 characters long.");
+                    nameChange.setError("Name change must be between 3 and 9 characters.");
                 }
             }
         });

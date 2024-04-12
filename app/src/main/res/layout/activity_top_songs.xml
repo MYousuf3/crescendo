@@ -1,212 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/topSongsLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF00FF">
+    android:background="@drawable/gradient_background2">
 
     <TextView
         android:id="@+id/topSongsTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your top songs"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_width="354dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="16dp"
+        android:text="Your Top Songs"
+        android:textAlignment="center"
+        android:textColor="@color/nice_black"
+        android:textSize="34sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+ />
 
     <!-- Song 1 -->
-    <LinearLayout
-        android:id="@+id/song1Container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/topSongsTitle"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
 
-        <TextView
-            android:id="@+id/songNumber1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1"
-            android:textSize="48sp"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/songThumbnail1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:scaleType="centerCrop" />
+    <TextView
+        android:id="@+id/songNumber1"
+        android:layout_width="28dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/metropolis"
+        android:text="1"
+        android:textColor="@color/nice_black"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/songThumbnail1"
+        app:layout_constraintHorizontal_bias="0.342"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/songTitle1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Song 1"
-            android:textSize="18sp"
-            android:textColor="#FFFFFF"
-            android:layout_marginStart="16dp" />
-    </LinearLayout>
     <!-- Song 2 -->
-    <LinearLayout
-        android:id="@+id/song2Container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/song1Container"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:id="@+id/songNumber2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2"
-            android:textSize="48sp"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/songThumbnail2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:scaleType="centerCrop" />
-
-        <TextView
-            android:id="@+id/songTitle2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Song 2"
-            android:textSize="18sp"
-            android:textColor="#FFFFFF"
-            android:layout_marginStart="16dp" />
-    </LinearLayout>
 
     <!-- Song 3 -->
-    <LinearLayout
-        android:id="@+id/song3Container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/song2Container"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:id="@+id/songNumber3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3"
-            android:textSize="48sp"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/songThumbnail3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:scaleType="centerCrop" />
-
-        <TextView
-            android:id="@+id/songTitle3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Song 3"
-            android:textSize="18sp"
-            android:textColor="#FFFFFF"
-            android:layout_marginStart="16dp" />
-    </LinearLayout>
 
     <!-- Song 4 -->
-    <LinearLayout
-        android:id="@+id/song4Container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/song3Container"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:id="@+id/songNumber4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="4"
-            android:textSize="48sp"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/songThumbnail4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:scaleType="centerCrop" />
-
-        <TextView
-            android:id="@+id/songTitle4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Song 4"
-            android:textSize="18sp"
-            android:textColor="#FFFFFF"
-            android:layout_marginStart="16dp" />
-    </LinearLayout>
 
     <!-- Song 5 -->
-    <LinearLayout
-        android:id="@+id/song5Container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/song4Container"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:id="@+id/songNumber5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="5"
-            android:textSize="48sp"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/songThumbnail5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:scaleType="centerCrop" />
-
-        <TextView
-            android:id="@+id/songTitle5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Song 5"
-            android:textSize="18sp"
-            android:textColor="#FFFFFF"
-            android:layout_marginStart="16dp" />
-    </LinearLayout>
     <!-- Share button -->
-    <ImageButton
-        android:id="@+id/shareButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:background="?attr/selectableItemBackground"
-        android:src="@android:drawable/ic_menu_share" />
 
-    <!-- Share text -->
+
+    <ImageView
+        android:id="@+id/songThumbnail1"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="5dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/songNumber1"
+        app:layout_constraintEnd_toStartOf="@+id/songTitle1"
+        app:layout_constraintHorizontal_bias="0.898"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/songNumber1"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
-        android:id="@+id/shareText"
+        android:id="@+id/songTitle1"
+        android:layout_width="197dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="28dp"
+        android:fontFamily="@font/metropolis"
+        android:text="Song 1"
+        android:textAlignment="viewStart"
+        android:textColor="@color/nice_black"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/songThumbnail1" />
+
+    <TextView
+        android:id="@+id/songNumber2"
+        android:layout_width="28dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/metropolis"
+        android:text="2"
+        android:textColor="@color/nice_black"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/songThumbnail2"
+        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/songNumber1" />
+
+
+    <ImageView
+        android:id="@+id/songThumbnail2"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="116dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/songNumber3"
+        app:layout_constraintEnd_toStartOf="@+id/songTitle2"
+        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/songNumber1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/songTitle2"
+        android:layout_width="199dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/metropolis"
+        android:text="Song 2"
+        android:textAlignment="viewStart"
+        android:textColor="@color/nice_black"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/songThumbnail2" />
+
+    <TextView
+        android:id="@+id/songNumber3"
+        android:layout_width="28dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/metropolis"
+        android:text="3"
+        android:textColor="@color/nice_black"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/songNumber2" />
+
+
+    <ImageView
+        android:id="@+id/songThumbnail3"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginBottom="116dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/songNumber4"
+        app:layout_constraintEnd_toStartOf="@+id/songTitle3"
+        app:layout_constraintHorizontal_bias="0.611"
+        app:layout_constraintStart_toEndOf="@+id/songNumber3"
+        app:layout_constraintTop_toTopOf="@+id/songNumber2"
+        app:layout_constraintVertical_bias="0.344" />
+
+   <TextView
+       android:id="@+id/songTitle3"
+       android:layout_width="206dp"
+       android:layout_height="79dp"
+       android:layout_marginTop="8dp"
+       android:layout_marginEnd="12dp"
+       android:fontFamily="@font/metropolis"
+       android:text="Song 3"
+       android:textAlignment="viewStart"
+       android:textColor="@color/nice_black"
+       android:textSize="21sp"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toTopOf="@+id/songThumbnail3" />
+
+    <TextView
+        android:id="@+id/songNumber4"
+        android:layout_width="28dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="56dp"
+        android:fontFamily="@font/metropolis"
+        android:text="4"
+        android:textColor="@color/nice_black"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/songNumber5"
+        app:layout_constraintStart_toStartOf="parent"  />
+
+
+    <ImageView
+        android:id="@+id/songThumbnail4"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginBottom="116dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/songNumber5"
+        app:layout_constraintEnd_toStartOf="@+id/songTitle4"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintStart_toEndOf="@+id/songNumber4"
+        app:layout_constraintTop_toTopOf="@+id/songNumber3"
+        app:layout_constraintVertical_bias="0.259" />
+
+    <TextView
+        android:id="@+id/songTitle4"
+        android:layout_width="212dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/metropolis"
+        android:text="Song 4"
+        android:textColor="@color/nice_black"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/songThumbnail4" />
+
+    <TextView
+        android:id="@+id/songNumber5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Share this story"
-        android:layout_above="@id/shareButton"
-        android:layout_centerHorizontal="true"
-        android:textColor="#FFFFFF" />
-</RelativeLayout>
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="72dp"
+        android:fontFamily="@font/metropolis"
+        android:text="5"
+        android:textColor="@color/nice_black"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+   <ImageView
+       android:id="@+id/songThumbnail5"
+       android:layout_width="85dp"
+       android:layout_height="85dp"
+       android:layout_marginTop="5dp"
+       android:layout_marginBottom="5dp"
+       android:scaleType="centerCrop"
+       app:layout_constraintBottom_toBottomOf="@+id/songNumber5"
+       app:layout_constraintEnd_toStartOf="@+id/songTitle5"
+       app:layout_constraintHorizontal_bias="0.616"
+       app:layout_constraintStart_toEndOf="@+id/songNumber5"
+       app:layout_constraintTop_toTopOf="@+id/songNumber5"
+       app:layout_constraintVertical_bias="0.147" />
+
+   <TextView
+       android:id="@+id/songTitle5"
+       android:layout_width="213dp"
+       android:layout_height="108dp"
+       android:layout_marginTop="8dp"
+       android:layout_marginEnd="8dp"
+       android:fontFamily="@font/metropolis"
+       android:text="Song 5"
+       android:textColor="@color/nice_black"
+       android:textSize="21sp"
+       android:textStyle="bold"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toTopOf="@+id/songThumbnail5" />
+
+
+   <!-- Share text -->
+</androidx.constraintlayout.widget.ConstraintLayout>
