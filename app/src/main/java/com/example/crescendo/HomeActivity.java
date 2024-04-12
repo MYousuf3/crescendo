@@ -9,7 +9,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.view.ActionMode;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -66,6 +69,7 @@ public class HomeActivity extends AppCompatActivity implements pastAdapter.ItemC
     public static ArrayList<Artist> topArtists;
 
     ImageView settings;
+    ImageView cd;
     String term;
 
     private FirebaseAuth auth;
@@ -84,7 +88,13 @@ public class HomeActivity extends AppCompatActivity implements pastAdapter.ItemC
 
         title = findViewById(R.id.title);
         spinner = findViewById(R.id.spinner);
+        cd = findViewById(R.id.playButton);
         term = "long_term";
+
+
+        Animation rotation = AnimationUtils.loadAnimation(HomeActivity.this, R.anim.rotate);
+        rotation.setFillAfter(true);
+        cd.startAnimation(rotation);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
