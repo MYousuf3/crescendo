@@ -23,15 +23,19 @@
 
     <TextView
         android:id="@+id/tasteText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
+        android:layout_width="360dp"
+        android:layout_height="266dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginRight="20dp"
         android:fontFamily="@font/metropolis"
+        android:lineSpacingExtra="2dp"
         android:text="Your taste in music is a fusion of introspective lyricism, innovative production, and soulful melodies. Artists like Drake, J Cole, Travis Scott, Daniel Caesar, SZA, and Kanye showcase your affinity for emotionally rich storytelling and diverse sonic landscapes.  Your musical spirit animal is the Eagle, symbolizing vision, strength, and a soaring spirit.       "
+        android:textAlignment="center"
         android:textColor="#D5D5D5"
-        android:textSize="14sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 </androidx.constraintlayout.widget.ConstraintLayout>
