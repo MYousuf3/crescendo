@@ -11,8 +11,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
 import org.jetbrains.annotations.Async;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -41,7 +39,7 @@ public class GameActivity extends AppCompatActivity {
         displayArtistNameTextView = findViewById(R.id.displayArtistNameTextView);
         showInputDialogButton = findViewById(R.id.showInputDialogButton);
 
-        Glide.with(getApplicationContext()).load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkliO9xHJ0NrIYKvWrTl5Hfsfs0JRkSnsPFEQIKnNvNA&s").placeholder(R.drawable.baseline_image_24).into(avatarImageView);
+        //Glide.with(getApplicationContext()).load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkliO9xHJ0NrIYKvWrTl5Hfsfs0JRkSnsPFEQIKnNvNA&s").placeholder(R.drawable.baseline_image_24).into(avatarImageView);
         ArrayList<String> myList = new ArrayList<>();
         myList.add("Bruno Mars");
 
