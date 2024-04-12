@@ -64,4 +64,8 @@ public class Artist {
         }
         return tagline;
     }
+
+    public int getFollowers() {
+        return followers;
+    }
 }

@@ -1,231 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/topArtistsLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#67CA71">
+    android:background="@drawable/gradient_text">
+
+    <!-- Song 1 -->
+
+
+    <!-- Song 2 -->
+
 
     <TextView
         android:id="@+id/topArtistsTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_width="354dp"
+        android:layout_height="58dp"
         android:layout_marginTop="16dp"
         android:text="Your Top Artists"
-        android:textColor="#003194"
-        android:textSize="24sp" />
+        android:textAlignment="center"
+        android:textColor="@color/nice_black"
+        android:textSize="34sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Song 1 -->
-    <LinearLayout
-        android:id="@+id/artist1Container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/topArtistsTitle"
-        android:layout_marginTop="50dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/artistNumber1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/metropolis"
-            android:text="1"
-            android:textColor="#003194"
-            android:textSize="48sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/artistThumbnail1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:scaleType="centerCrop" />
-
-        <TextView
-            android:id="@+id/artistTitle1"
-            android:layout_width="72dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/metropolis"
-            android:text="Artist 1"
-            android:textColor="#003194"
-            android:textSize="18sp"
-            android:textStyle="italic" />
-    </LinearLayout>
-    <!-- Song 2 -->
-    <LinearLayout
-        android:id="@+id/artist2Container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/artist1Container"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp">
-
-        <TextView
-            android:id="@+id/artistNumber2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2"
-            android:fontFamily="@font/metropolis"
-            android:textColor="#003194"
-            android:textSize="48sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/artistThumbnail2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:scaleType="centerCrop" />
-
-        <TextView
-            android:id="@+id/artistTitle2"
-            android:layout_width="72dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/metropolis"
-            android:text="Artist 2"
-            android:textColor="#003194"
-            android:textSize="18sp"
-            android:textStyle="italic"/>
-    </LinearLayout>
 
     <!-- Song 3 -->
-    <LinearLayout
-        android:id="@+id/artist3Container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/artist2Container"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp">
 
-        <TextView
-            android:id="@+id/artistNumber3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3"
-            android:textColor="#003194"
-            android:fontFamily="@font/metropolis"
-            android:textSize="48sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/artistThumbnail3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:scaleType="centerCrop" />
-
-        <TextView
-            android:id="@+id/artistTitle3"
-            android:layout_width="72dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Artist 3"
-            android:textColor="#003194"
-            android:textSize="18sp"
-            android:fontFamily="@font/metropolis"
-            android:textStyle="italic"/>
-    </LinearLayout>
 
     <!-- Song 4 -->
-    <LinearLayout
-        android:id="@+id/artist4Container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/artist3Container"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp">
 
-        <TextView
-            android:id="@+id/artistNumber4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="4"
-            android:textColor="#003194"
-            android:textSize="48sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/metropolis"/>
-
-        <ImageView
-            android:id="@+id/artistThumbnail4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:scaleType="centerCrop" />
-
-        <TextView
-            android:id="@+id/artistTitle4"
-            android:layout_width="72dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Artist 4"
-            android:textColor="#003194"
-            android:textSize="18sp"
-            android:fontFamily="@font/metropolis"
-            android:textStyle="italic"/>
-    </LinearLayout>
 
     <!-- Song 5 -->
-    <LinearLayout
-        android:id="@+id/artist5Container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/artist4Container"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp">
 
-        <TextView
-            android:id="@+id/artistNumber5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="5"
-            android:textColor="#003194"
-            android:textSize="48sp"
-            android:fontFamily="@font/metropolis"
-            android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/artistThumbnail5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:scaleType="centerCrop" />
-
-        <TextView
-            android:id="@+id/artistTitle5"
-            android:layout_width="72dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Artist 5"
-            android:textColor="#003194"
-            android:textSize="18sp"
-            android:fontFamily="@font/metropolis"
-            android:textStyle="italic"/>
-    </LinearLayout>
-    <!-- Share button -->
-    <ImageButton
-        android:id="@+id/shareButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:background="?attr/selectableItemBackground"
-        android:src="@android:drawable/ic_menu_share" />
-
-    <!-- Share text -->
     <TextView
-        android:id="@+id/shareText"
+        android:id="@+id/artistTitle4"
+        android:layout_width="106dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="84dp"
+        android:fontFamily="@font/metropolis"
+        android:text="Artist 4"
+        android:textColor="@color/nice_black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/artistThumbnail4" />
+
+    <ImageView
+        android:id="@+id/artistThumbnail4"
+        android:layout_width="94dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginBottom="116dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/artistNumber5"
+        app:layout_constraintEnd_toStartOf="@+id/artistTitle4"
+        app:layout_constraintHorizontal_bias="0.436"
+        app:layout_constraintStart_toEndOf="@+id/artistNumber4"
+        app:layout_constraintTop_toTopOf="@+id/artistNumber3"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/artistThumbnail5"
+        android:layout_width="94dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/artistNumber5"
+        app:layout_constraintEnd_toStartOf="@+id/artistTitle5"
+        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintStart_toEndOf="@+id/artistNumber5"
+        app:layout_constraintTop_toTopOf="@+id/artistNumber5"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/artistNumber3"
+        android:layout_width="28dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/metropolis"
+        android:text="3"
+        android:textColor="@color/nice_black"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artistNumber2" />
+
+    <TextView
+        android:id="@+id/artistTitle2"
+        android:layout_width="97dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="96dp"
+        android:fontFamily="@font/metropolis"
+        android:text="Artist 2"
+        android:textAlignment="viewStart"
+        android:textColor="@color/nice_black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/artistThumbnail2" />
+
+    <TextView
+        android:id="@+id/artistNumber1"
+        android:layout_width="28dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/metropolis"
+        android:text="1"
+        android:textColor="@color/nice_black"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/artistThumbnail1"
+        app:layout_constraintHorizontal_bias="0.342"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/artistNumber2"
+        android:layout_width="28dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/metropolis"
+        android:text="2"
+        android:textColor="@color/nice_black"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/artistThumbnail2"
+        app:layout_constraintHorizontal_bias="0.324"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artistNumber1" />
+
+    <TextView
+        android:id="@+id/artistTitle3"
+        android:layout_width="96dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="96dp"
+        android:fontFamily="@font/metropolis"
+        android:text="Artist 3"
+        android:textAlignment="viewStart"
+        android:textColor="@color/nice_black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/artistThumbnail3" />
+
+    <TextView
+        android:id="@+id/artistTitle5"
+        android:layout_width="109dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="80dp"
+        android:fontFamily="@font/metropolis"
+        android:text="Artist 5"
+        android:textColor="@color/nice_black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/artistThumbnail5" />
+
+    <TextView
+        android:id="@+id/artistTitle1"
+        android:layout_width="92dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="100dp"
+        android:fontFamily="@font/metropolis"
+        android:text="Artist 1"
+        android:textAlignment="viewStart"
+        android:textColor="@color/nice_black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/artistThumbnail1" />
+
+    <ImageView
+        android:id="@+id/artistThumbnail3"
+        android:layout_width="94dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginBottom="116dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/artistNumber4"
+        app:layout_constraintEnd_toStartOf="@+id/artistTitle3"
+        app:layout_constraintHorizontal_bias="0.447"
+        app:layout_constraintStart_toEndOf="@+id/artistNumber3"
+        app:layout_constraintTop_toTopOf="@+id/artistNumber2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/artistThumbnail1"
+        android:layout_width="94dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="5dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/artistNumber1"
+        app:layout_constraintEnd_toStartOf="@+id/artistTitle1"
+        app:layout_constraintHorizontal_bias="0.695"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/artistNumber1"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/artistNumber4"
+        android:layout_width="28dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="52dp"
+        android:fontFamily="@font/metropolis"
+        android:text="4"
+        android:textColor="@color/nice_black"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/artistNumber5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/artistThumbnail2"
+        android:layout_width="94dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="116dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/artistNumber3"
+        app:layout_constraintEnd_toStartOf="@+id/artistTitle2"
+        app:layout_constraintHorizontal_bias="0.696"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/artistNumber1"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/artistNumber5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/shareButton"
-        android:layout_centerHorizontal="true"
-        android:text="Share This Story!"
-        android:textColor="#003194" />
-</RelativeLayout>
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="96dp"
+        android:fontFamily="@font/metropolis"
+        android:text="5"
+        android:textColor="@color/nice_black"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Share button -->
+
+    <!-- Share text -->
+</androidx.constraintlayout.widget.ConstraintLayout>

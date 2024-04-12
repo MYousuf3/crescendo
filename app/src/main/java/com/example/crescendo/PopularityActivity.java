@@ -31,7 +31,7 @@ public class PopularityActivity extends AppCompatActivity {
         }
 
         popScore = popTotal / ct;
-        popScoreMessage = "Your popularity score is " + popScore;
+        popScoreMessage = "Your Popularity Score Is: \n" + popScore;
 
         if (popScore >= 90) {
             quip = "Please go listen to something other than Taylor Swift or Drake.";
