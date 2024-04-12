@@ -57,6 +57,8 @@ public class HomeActivity extends AppCompatActivity implements pastAdapter.ItemC
     JSONObject songJSON;
     JSONObject artistJSON;
     JSONArray newJSON;
+    JSONArray wrapsArray;
+    String oldWraps;
     public static ArrayList<Song> topSongs;
     public static ArrayList<Artist> topArtists;
 
@@ -82,14 +84,38 @@ public class HomeActivity extends AppCompatActivity implements pastAdapter.ItemC
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {
             title.setText("Welcome " + currentUser.getDisplayName());
-            ArrayList<String> pastWrap = new ArrayList<>();
-            pastWrap.add("Wrap #1");
-            pastWrap.add("Wrap #2");
-            RecyclerView recyclerView = findViewById(R.id.previousWrap);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            adapter = new pastAdapter(this, pastWrap);
-            adapter.setClickListener(this);
-            recyclerView.setAdapter(adapter);
+            database.collection("users")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    if (document.get("id").equals(currentUser.getUid())) {
+                                        oldWraps = (String) document.get("wraps");
+                                        System.out.println(oldWraps);
+                                        ArrayList<String> pastWrap = new ArrayList<>();
+                                        try {
+                                            wrapsArray = new JSONArray(oldWraps);
+                                            for (int i = 0; i < wrapsArray.length(); i++) {
+                                                pastWrap.add("Wrap #" + (i + 1));
+                                            }
+                                        } catch (JSONException e) {
+                                            throw new RuntimeException(e);
+                                        }
+
+                                        RecyclerView recyclerView = findViewById(R.id.previousWrap);
+                                        recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
+                                        adapter = new pastAdapter(HomeActivity.this, pastWrap);
+                                        adapter.setClickListener(HomeActivity.this);
+                                        recyclerView.setAdapter(adapter);
+                                    }
+                                }
+                            } else {
+                                System.out.println("Error getting documents." + task.getException());
+                            }
+                        }
+                    });
         }
         findViewById(R.id.playWrappedButton).setOnClickListener(view -> authenticateSpotify());
 
@@ -259,6 +285,21 @@ public class HomeActivity extends AppCompatActivity implements pastAdapter.ItemC
 
     @Override
     public void onItemClick(View view, int position) {
-        System.out.println("hi" + position);
+        try {
+            JSONObject wrap = wrapsArray.getJSONObject(position);
+            JSONObject artistObj = wrap.getJSONObject("artists");
+            JSONObject songObj = wrap.getJSONObject("songs");
+            topArtists = parseArtists(artistObj);
+            topSongs = parseSongs(songObj);
+
+
+            Intent intent = new Intent(HomeActivity.this, TransitionActivity.class);
+            intent.putExtra(TransitionActivity.NEXT_ACTIVITY_KEY, "song");
+            startActivity(intent);
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

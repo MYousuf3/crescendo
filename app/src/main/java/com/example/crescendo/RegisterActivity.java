@@ -88,8 +88,11 @@ public class RegisterActivity extends AppCompatActivity {
         if (nameEdit.getText().length() < 2) {
             nameEdit.setError("Please enter a name at least 2 characters long.");
             nameEdit.requestFocus();
+        } else if (nameEdit.getText().length() > 9){
+            nameEdit.setError("Please enter a name less than 10 characters long.");
+            nameEdit.requestFocus();
         }
-        if (!isValidEmail(email)) {
+        else if (!isValidEmail(email)) {
             usernameEdit.setError("Please enter a valid email!");
             usernameEdit.requestFocus();
         } else if (password.length() < 6) {

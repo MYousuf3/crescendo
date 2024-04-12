@@ -76,6 +76,10 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String newName = nameChange.getText().toString();
                 if (newName.length() > 2) {
+                    if (newName.length() > 9) {
+                        nameChange.setError("Please enter a name less than 10 characters long.");
+                        nameChange.requestFocus();
+                    }
                     assert user != null;
                     if (!newName.equals(user.getDisplayName())) {
                         user.updateProfile(new UserProfileChangeRequest.Builder().setDisplayName(newName).build()).addOnCompleteListener(new OnCompleteListener<Void>() {

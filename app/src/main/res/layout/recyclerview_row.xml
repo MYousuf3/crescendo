@@ -10,6 +10,8 @@
         android:id="@+id/tvWrapped"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"/>
+        android:fontFamily="@font/metropolis"
+        android:textColor="@color/calm_green"
+        android:textSize="20sp" />
 
 </LinearLayout>
