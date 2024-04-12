@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/nice_black">
@@ -14,7 +16,6 @@
         android:id="@+id/title"
         android:layout_width="309dp"
         android:layout_height="128dp"
-        android:layout_above="@+id/playWrappedButton"
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -48,9 +49,14 @@
         android:id="@+id/settingsIcon"
         android:layout_width="74dp"
         android:layout_height="58dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="-1dp"
-        android:src="@drawable/settings" />
+        android:backgroundTint="#2EFF00"
+        android:foregroundTint="#11FA00"
+        android:src="@drawable/settings"
+        app:tint="@color/calm_green" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/previousWrap"
@@ -84,18 +90,27 @@
 
         />
 
-    <Button
-        android:id="@+id/playButton"
-        android:layout_width="232dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/previousWrap"
-        android:layout_below="@+id/spinner"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="91dp"
-        android:layout_marginBottom="92dp"
-        android:text="Play Your Wrapped" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="223dp">
+
+        <ImageView
+            android:id="@+id/playButton"
+            android:layout_width="204dp"
+            android:layout_height="172dp"
+            android:layout_marginStart="141dp"
+            android:layout_marginTop="189dp"
+            android:layout_marginEnd="142dp"
+            android:animation="@anim/rotate"
+            android:layout_marginBottom="83dp"
+            android:src="@drawable/spotify_cd"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+             />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>
