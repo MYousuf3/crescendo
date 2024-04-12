@@ -51,6 +51,8 @@ public class Artist {
         return imageURL;
     }
 
+    public ArrayList<String> getGenres() {return genres;}
+
     public String getTagline() {
         String tagline;
         if (popularity >= 80) {

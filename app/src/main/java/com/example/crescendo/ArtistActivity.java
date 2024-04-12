@@ -18,6 +18,8 @@ public class ArtistActivity extends AppCompatActivity {
     private TextView artistTaglineView;
     private ImageView artistImageView;
     private List<Artist> topArtists;
+    private FrequencyTable<String, Integer> freqTable;
+    private String topGenre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public class ArtistActivity extends AppCompatActivity {
         artistImageView = findViewById(R.id.artistImage);
 
         // Assuming topArtists is populated from HomeActivity
-        topArtists = HomeActivity.topArtists;
+
 
         findViewById(R.id.artistView).setOnClickListener(view -> {
             artistNumber--;
