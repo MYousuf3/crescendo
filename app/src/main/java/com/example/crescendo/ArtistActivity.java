@@ -62,7 +62,6 @@ public class ArtistActivity extends AppCompatActivity {
 
         Picasso.get()
                 .load(imageUrl)
-                .placeholder(R.drawable.ic_launcher_background) // Placeholder image
                 .into(artistImageView);
     }
 }

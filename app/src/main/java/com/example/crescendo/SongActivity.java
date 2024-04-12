@@ -63,11 +63,9 @@ public class SongActivity extends AppCompatActivity {
         songNameView.setText(songName);
         songArtistView.setText(artists);
         songTaglineView.setText(tagline);
-        // For now, using a placeholder image for the album
         // In future, you can load the image from the song's imageURL
         Picasso.get()
                 .load(imageUrl)
-                .placeholder(R.drawable.ic_launcher_background) // Placeholder image
                 .into(songImageView);
     }
 }
