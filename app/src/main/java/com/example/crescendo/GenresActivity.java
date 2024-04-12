@@ -26,7 +26,7 @@ public class GenresActivity extends AppCompatActivity {
         setupGenreDetails();
 
         // Set the entire view as clickable to navigate back to the HomeActivity
-        findViewById(R.id.backgroundImage).setOnClickListener(view -> goToHomeActivity());
+        findViewById(R.id.relativeLayout2).setOnClickListener(view -> goToHomeActivity());
     }
 
     private void setupGenreDetails() {
