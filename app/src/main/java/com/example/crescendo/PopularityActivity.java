@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -13,11 +15,13 @@ public class PopularityActivity extends AppCompatActivity {
     private int popScore;
     private String popScoreMessage;
     private ArrayList<Song> topSongs;
+    RelativeLayout layout;
     private String quip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popularity);
+        layout = findViewById(R.id.poplayout);
 
         topSongs = HomeActivity.topSongs;
         int ct = 0;
@@ -38,6 +42,13 @@ public class PopularityActivity extends AppCompatActivity {
         }
 
         setUpPopularityDetails();
+
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToTransitionActivity();
+            }
+        });
     }
 
     private void setUpPopularityDetails() {
@@ -45,8 +56,8 @@ public class PopularityActivity extends AppCompatActivity {
             return;
         }
 
-        ((TextView) findViewById(R.id.textView1)).setText(popScoreMessage);
-        ((TextView) findViewById(R.id.textView2)).setText(quip);
+        ((TextView) findViewById(R.id.popScoreText)).setText(popScoreMessage);
+        ((TextView) findViewById(R.id.quipText)).setText(quip);
     }
 
     private void goToTransitionActivity() {

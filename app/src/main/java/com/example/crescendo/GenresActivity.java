@@ -32,10 +32,7 @@ public class GenresActivity extends AppCompatActivity {
     private void setupGenreDetails() {
         // Set the genre names
         ((TextView) findViewById(R.id.textView1)).setText(topGenre);
-        ((TextView) findViewById(R.id.textView2)).setText("Genre 2");
-        ((TextView) findViewById(R.id.textView3)).setText("Genre 3");
-        ((TextView) findViewById(R.id.textView4)).setText("Genre 4");
-        ((TextView) findViewById(R.id.textView5)).setText("Genre 5");
+
     }
 
     private void goToHomeActivity() {

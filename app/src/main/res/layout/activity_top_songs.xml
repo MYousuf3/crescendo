@@ -3,17 +3,19 @@
     android:id="@+id/topSongsLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF00FF">
+    android:background="#6CE895">
 
     <TextView
         android:id="@+id/topSongsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your top songs"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/metropolis"
+        android:text="Your top songs"
+        android:textColor="#003194"
+        android:textSize="24sp" />
 
     <!-- Song 1 -->
     <LinearLayout
@@ -21,17 +23,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/topSongsTitle"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:layout_marginTop="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/songNumber1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/metropolis"
             android:text="1"
+            android:textColor="#003194"
             android:textSize="48sp"
-            android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
         <ImageView
@@ -45,27 +48,38 @@
             android:id="@+id/songTitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/metropolis"
             android:text="Song 1"
+            android:textColor="#003194"
             android:textSize="18sp"
-            android:textColor="#FFFFFF"
-            android:layout_marginStart="16dp" />
+            android:textStyle="italic" />
     </LinearLayout>
     <!-- Song 2 -->
+
+    <!-- Song 3 -->
+
+    <!-- Song 4 -->
+
+    <!-- Song 5 -->
+    <!-- Share button -->
     <LinearLayout
         android:id="@+id/song2Container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/song1Container"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:layout_marginTop="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/songNumber2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/metropolis"
             android:text="2"
+            android:textColor="#003194"
             android:textSize="48sp"
-            android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
         <ImageView
@@ -79,28 +93,31 @@
             android:id="@+id/songTitle2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/metropolis"
             android:text="Song 2"
+            android:textColor="#003194"
             android:textSize="18sp"
-            android:textColor="#FFFFFF"
-            android:layout_marginStart="16dp" />
+            android:textStyle="italic" />
     </LinearLayout>
 
-    <!-- Song 3 -->
     <LinearLayout
         android:id="@+id/song3Container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/song2Container"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:layout_marginTop="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/songNumber3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/metropolis"
             android:text="3"
+            android:textColor="#003194"
             android:textSize="48sp"
-            android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
         <ImageView
@@ -114,28 +131,31 @@
             android:id="@+id/songTitle3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/metropolis"
             android:text="Song 3"
+            android:textColor="#003194"
             android:textSize="18sp"
-            android:textColor="#FFFFFF"
-            android:layout_marginStart="16dp" />
+            android:textStyle="italic" />
     </LinearLayout>
 
-    <!-- Song 4 -->
     <LinearLayout
         android:id="@+id/song4Container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/song3Container"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:layout_marginTop="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/songNumber4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/metropolis"
             android:text="4"
+            android:textColor="#003194"
             android:textSize="48sp"
-            android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
         <ImageView
@@ -149,28 +169,31 @@
             android:id="@+id/songTitle4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/metropolis"
             android:text="Song 4"
+            android:textColor="#003194"
             android:textSize="18sp"
-            android:textColor="#FFFFFF"
-            android:layout_marginStart="16dp" />
+            android:textStyle="italic" />
     </LinearLayout>
 
-    <!-- Song 5 -->
     <LinearLayout
         android:id="@+id/song5Container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/song4Container"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:layout_marginTop="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/songNumber5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/metropolis"
             android:text="5"
+            android:textColor="#003194"
             android:textSize="48sp"
-            android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
         <ImageView
@@ -184,29 +207,13 @@
             android:id="@+id/songTitle5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/metropolis"
             android:text="Song 5"
+            android:textColor="#003194"
             android:textSize="18sp"
-            android:textColor="#FFFFFF"
-            android:layout_marginStart="16dp" />
+            android:textStyle="italic" />
     </LinearLayout>
-    <!-- Share button -->
-    <ImageButton
-        android:id="@+id/shareButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:background="?attr/selectableItemBackground"
-        android:src="@android:drawable/ic_menu_share" />
 
     <!-- Share text -->
-    <TextView
-        android:id="@+id/shareText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Share this story"
-        android:layout_above="@id/shareButton"
-        android:layout_centerHorizontal="true"
-        android:textColor="#FFFFFF" />
 </RelativeLayout>

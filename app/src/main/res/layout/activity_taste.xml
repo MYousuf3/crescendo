@@ -5,15 +5,17 @@
     android:id="@+id/tastelayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_template2"
     tools:context=".Taste">
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="204dp"
         android:fontFamily="@font/metropolis"
         android:text="Your Taste in Music:"
+        android:textColor="#D5D5D5"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="136dp"
         android:fontFamily="@font/metropolis"
-        android:text="AI is thinking..."
+        android:text="Your taste in music is a fusion of introspective lyricism, innovative production, and soulful melodies. Artists like Drake, J Cole, Travis Scott, Daniel Caesar, SZA, and Kanye showcase your affinity for emotionally rich storytelling and diverse sonic landscapes.  Your musical spirit animal is the Eagle, symbolizing vision, strength, and a soaring spirit.       "
+        android:textColor="#D5D5D5"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
