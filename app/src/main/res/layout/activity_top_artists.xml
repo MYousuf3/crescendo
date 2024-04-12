@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="Your top artists"
-        android:textColor="#FFFFFF"
+        android:text="Your Top Artists"
+        android:textColor="#003194"
         android:textSize="24sp" />
 
     <!-- Song 1 -->
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/topArtistsTitle"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="50dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -29,8 +29,9 @@
             android:id="@+id/artistNumber1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/metropolis"
             android:text="1"
-            android:textColor="#FFFFFF"
+            android:textColor="#003194"
             android:textSize="48sp"
             android:textStyle="bold" />
 
@@ -43,12 +44,14 @@
 
         <TextView
             android:id="@+id/artistTitle1"
-            android:layout_width="wrap_content"
+            android:layout_width="72dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="artist 1"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:fontFamily="@font/metropolis"
+            android:text="Artist 1"
+            android:textColor="#003194"
+            android:textSize="18sp"
+            android:textStyle="italic" />
     </LinearLayout>
     <!-- Song 2 -->
     <LinearLayout
@@ -57,14 +60,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/artist1Container"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
 
         <TextView
             android:id="@+id/artistNumber2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2"
-            android:textColor="#FFFFFF"
+            android:fontFamily="@font/metropolis"
+            android:textColor="#003194"
             android:textSize="48sp"
             android:textStyle="bold" />
 
@@ -77,12 +82,14 @@
 
         <TextView
             android:id="@+id/artistTitle2"
-            android:layout_width="wrap_content"
+            android:layout_width="72dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="artist 2"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:fontFamily="@font/metropolis"
+            android:text="Artist 2"
+            android:textColor="#003194"
+            android:textSize="18sp"
+            android:textStyle="italic"/>
     </LinearLayout>
 
     <!-- Song 3 -->
@@ -92,14 +99,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/artist2Container"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
 
         <TextView
             android:id="@+id/artistNumber3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3"
-            android:textColor="#FFFFFF"
+            android:textColor="#003194"
+            android:fontFamily="@font/metropolis"
             android:textSize="48sp"
             android:textStyle="bold" />
 
@@ -112,12 +121,14 @@
 
         <TextView
             android:id="@+id/artistTitle3"
-            android:layout_width="wrap_content"
+            android:layout_width="72dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="Artist 3"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="#003194"
+            android:textSize="18sp"
+            android:fontFamily="@font/metropolis"
+            android:textStyle="italic"/>
     </LinearLayout>
 
     <!-- Song 4 -->
@@ -127,16 +138,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/artist3Container"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
 
         <TextView
             android:id="@+id/artistNumber4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4"
-            android:textColor="#FFFFFF"
+            android:textColor="#003194"
             android:textSize="48sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="@font/metropolis"/>
 
         <ImageView
             android:id="@+id/artistThumbnail4"
@@ -147,12 +160,14 @@
 
         <TextView
             android:id="@+id/artistTitle4"
-            android:layout_width="wrap_content"
+            android:layout_width="72dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="Artist 4"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="#003194"
+            android:textSize="18sp"
+            android:fontFamily="@font/metropolis"
+            android:textStyle="italic"/>
     </LinearLayout>
 
     <!-- Song 5 -->
@@ -162,15 +177,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/artist4Container"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
 
         <TextView
             android:id="@+id/artistNumber5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="5"
-            android:textColor="#FFFFFF"
+            android:textColor="#003194"
             android:textSize="48sp"
+            android:fontFamily="@font/metropolis"
             android:textStyle="bold" />
 
         <ImageView
@@ -182,12 +199,14 @@
 
         <TextView
             android:id="@+id/artistTitle5"
-            android:layout_width="wrap_content"
+            android:layout_width="72dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="Artist 5"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textColor="#003194"
+            android:textSize="18sp"
+            android:fontFamily="@font/metropolis"
+            android:textStyle="italic"/>
     </LinearLayout>
     <!-- Share button -->
     <ImageButton
@@ -207,6 +226,6 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/shareButton"
         android:layout_centerHorizontal="true"
-        android:text="Share this story"
-        android:textColor="#FFFFFF" />
+        android:text="Share This Story!"
+        android:textColor="#003194" />
 </RelativeLayout>
