@@ -24,7 +24,7 @@ public class TransitionActivity extends AppCompatActivity {
                     intent = new Intent(TransitionActivity.this, SongActivity.class);
                     break;
                 case "artist":
-                    intent = new Intent(TransitionActivity.this, ArtistActivity.class);
+                    intent = new Intent(TransitionActivity.this, LLMActivity.class);
                     break;
                 case "genre":
                     intent = new Intent(TransitionActivity.this, GenresActivity.class);
@@ -34,6 +34,6 @@ public class TransitionActivity extends AppCompatActivity {
             }
             startActivity(intent);
             finish(); // Finish TransitionActivity
-        }, 3000); // Delay for 3 seconds
+        }, 2000); // Delay for 3 seconds
     }
 }

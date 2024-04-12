@@ -29,7 +29,7 @@ public class GenresActivity extends AppCompatActivity {
     }
 
     private void goToHomeActivity() {
-        Intent intent = new Intent(GenresActivity.this, HomeActivity.class);
+        Intent intent = new Intent(GenresActivity.this, Taste.class);
         startActivity(intent);
         finish(); // Finish TopGenresActivity
     }

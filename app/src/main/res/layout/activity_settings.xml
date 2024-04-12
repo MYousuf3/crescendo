@@ -4,6 +4,144 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsActivity">
+    tools:context=".SettingsActivity"
+    android:background="@color/nice_black">
+
+    <Button
+        android:id="@+id/signOutBtnSettings"
+        android:layout_width="169dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/calm_green"
+        android:text="Sign Out"
+        android:textAlignment="center"
+        android:textColor="@color/nice_black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.596" />
+
+    <EditText
+        android:id="@+id/nameSettingsEdit"
+        android:layout_width="245dp"
+        android:layout_height="65dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="168dp"
+        android:backgroundTint="@color/calm_green"
+        android:ellipsize="start"
+        android:ems="10"
+        android:fontFamily="@font/metropolis"
+        android:gravity="center_horizontal"
+        android:hint="Change Name"
+        android:inputType="text"
+        android:textColor="@color/calm_green"
+        android:textColorHint="@color/calm_green"
+        app:layout_constraintBottom_toTopOf="@+id/signOutBtnSettings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.096"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.039" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/passwordSettingsEdit"
+        android:layout_width="243dp"
+        android:layout_height="65dp"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/calm_green"
+        android:ellipsize="start"
+        android:fontFamily="@font/metropolis"
+        android:gravity="center_horizontal"
+        android:hint="Change Password"
+        android:password="true"
+        android:textColor="@color/calm_green"
+        android:textColorHint="@color/calm_green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameSettingsEdit"
+        app:layout_constraintVertical_bias="0.056" />
+
+    <Button
+        android:id="@+id/deleteAccountButton"
+        android:layout_width="128dp"
+        android:layout_height="54dp"
+        android:backgroundTint="@color/calm_green"
+        android:text="Delete Account"
+        android:textAlignment="center"
+        android:textColor="@color/nice_black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signOutBtnSettings"
+        app:layout_constraintVertical_bias="0.156" />
+
+    <TextView
+        android:id="@+id/accountHeader"
+        android:layout_width="292dp"
+        android:layout_height="96dp"
+        android:fontFamily="@font/metropolis"
+        android:text="Account Settings"
+        android:textAlignment="center"
+        android:textColor="@color/calm_green"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/nameSettingsEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <Button
+        android:id="@+id/confirmNameButton"
+        android:layout_width="97dp"
+        android:layout_height="41dp"
+        android:backgroundTint="@color/calm_green"
+        android:text="Confirm"
+        android:textColor="@color/nice_black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/signOutBtnSettings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toEndOf="@+id/nameSettingsEdit"
+        app:layout_constraintTop_toBottomOf="@+id/accountHeader"
+        app:layout_constraintVertical_bias="0.259" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/nice_black"
+        android:text="Cancel"
+        android:textColor="@color/Celadon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deleteAccountButton"
+        app:layout_constraintVertical_bias="0.672"
+        app:strokeColor="@color/calm_green"
+        app:strokeWidth="3dp" />
+
+    <Button
+        android:id="@+id/confirmPasswordButton"
+        android:layout_width="97dp"
+        android:layout_height="41dp"
+        android:backgroundTint="@color/calm_green"
+        android:text="Confirm"
+        android:textColor="@color/nice_black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/signOutBtnSettings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toEndOf="@+id/passwordSettingsEdit"
+        app:layout_constraintTop_toBottomOf="@+id/confirmNameButton"
+        app:layout_constraintVertical_bias="0.315" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

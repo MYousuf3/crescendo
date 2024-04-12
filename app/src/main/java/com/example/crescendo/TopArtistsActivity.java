@@ -7,35 +7,48 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
 public class TopArtistsActivity extends AppCompatActivity {
+
+    private List<Artist> topArtists;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_top_artists); // Ensure you have a layout named activity_top_artists
+        setContentView(R.layout.activity_top_artists);
+
+        // Assuming topArtists is populated from somewhere, similar to topSongs
+        topArtists = HomeActivity.topArtists;
 
         setupArtistDetails();
 
-        // Set the entire view as clickable to navigate to the next activity
         findViewById(R.id.topArtistsLayout).setOnClickListener(view -> goToTransitionActivity());
     }
 
     private void setupArtistDetails() {
-        // Set the artist names and images
-        ((TextView) findViewById(R.id.artistTitle1)).setText("Artist 1");
-        ((ImageView) findViewById(R.id.artistThumbnail1)).setImageResource(R.drawable.ic_launcher_background);
+        if (topArtists == null || topArtists.size() < 5) {
+            // Handle case where there are not enough artists
+            return;
+        }
 
-        ((TextView) findViewById(R.id.artistTitle2)).setText("Artist 2");
-        ((ImageView) findViewById(R.id.artistThumbnail2)).setImageResource(R.drawable.ic_launcher_background);
+        // Loop through the first five artists and set their details
+        for (int i = 0; i < 5; i++) {
+            Artist artist = topArtists.get(i);
+            String artistTitleId = "artistTitle" + (i + 1);
+            String artistThumbnailId = "artistThumbnail" + (i + 1);
 
-        ((TextView) findViewById(R.id.artistTitle3)).setText("Artist 3");
-        ((ImageView) findViewById(R.id.artistThumbnail3)).setImageResource(R.drawable.ic_launcher_background);
+            int titleResId = getResources().getIdentifier(artistTitleId, "id", getPackageName());
+            int thumbnailResId = getResources().getIdentifier(artistThumbnailId, "id", getPackageName());
 
-        ((TextView) findViewById(R.id.artistTitle4)).setText("Artist 4");
-        ((ImageView) findViewById(R.id.artistThumbnail4)).setImageResource(R.drawable.ic_launcher_background);
+            TextView artistTitleView = findViewById(titleResId);
+            ImageView artistThumbnailView = findViewById(thumbnailResId);
 
-        ((TextView) findViewById(R.id.artistTitle5)).setText("Artist 5");
-        ((ImageView) findViewById(R.id.artistThumbnail5)).setImageResource(R.drawable.ic_launcher_background);
+            artistTitleView.setText(artist.artistName);
+            Picasso.get().load(artist.getImageURL()).into(artistThumbnailView);
+        }
     }
 
     private void goToTransitionActivity() {

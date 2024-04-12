@@ -9,6 +9,12 @@
     <string name="newacc">Don\'t have an account?</string>
     <string name="alrdyacc">Already have an account?</string>
 
+    <string-array name="spinner_items">
+        <item>Long Term</item>
+        <item>Medium Term</item>
+        <item>Short Term</item>
+    </string-array>
+
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
