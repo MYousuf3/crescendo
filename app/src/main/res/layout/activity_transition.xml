@@ -4,7 +4,9 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/transition_template">
+    android:background="@drawable/transition_template"
+    android:backgroundTint="#770E9B"
+    android:backgroundTintMode="add">
 
     <!-- ImageView for the background once we have background images -->
     <!--    <ImageView-->

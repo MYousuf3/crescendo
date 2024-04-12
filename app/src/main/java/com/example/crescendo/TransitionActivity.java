@@ -1,12 +1,17 @@
 package com.example.crescendo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.ImageViewCompat;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -48,6 +53,18 @@ public class TransitionActivity extends AppCompatActivity {
 
         int index = rand.nextInt(quips.size());
         String quip = quips.remove(index);
+
+        ConstraintLayout layout = findViewById(R.id.relativeLayout);
+
+        ArrayList<String> colors = new ArrayList<>();
+
+        colors.add("#32532f");
+        colors.add("#770e9b");
+        colors.add("#6f0829");
+        colors.add("#135616");
+        colors.add("#000000");
+
+        int indexColor = rand.nextInt(colors.size());
 
 
         transitionText.setText(quip);
