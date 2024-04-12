@@ -24,7 +24,7 @@ public class TransitionActivity extends AppCompatActivity {
                     intent = new Intent(TransitionActivity.this, SongActivity.class);
                     break;
                 case "artist":
-                    intent = new Intent(TransitionActivity.this, ArtistActivity.class);
+                    intent = new Intent(TransitionActivity.this, LLMActivity.class);
                     break;
                 case "genre":
                     intent = new Intent(TransitionActivity.this, GenresActivity.class);

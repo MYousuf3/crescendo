@@ -10,8 +10,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -52,6 +54,7 @@ public class HomeActivity extends AppCompatActivity implements pastAdapter.ItemC
     private final OkHttpClient mOkHttpClient = new OkHttpClient();
     private String mAccessToken;
     private Call mCall;
+    Spinner spinner;
 
     private TextView title;
     JSONObject songJSON;
@@ -64,6 +67,7 @@ public class HomeActivity extends AppCompatActivity implements pastAdapter.ItemC
 
     Button signOut;
     ImageView settings;
+    String term;
 
     private FirebaseAuth auth;
     private FirebaseFirestore database;
@@ -79,8 +83,28 @@ public class HomeActivity extends AppCompatActivity implements pastAdapter.ItemC
         database = FirebaseFirestore.getInstance();
         settings = findViewById(R.id.settingsIcon);
 
-
         title = findViewById(R.id.title);
+        spinner = findViewById(R.id.spinner);
+        term = "long_term";
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+                    term = "long_term";
+                    System.out.println(term);
+                } else if (position == 1) {
+                    term = "medium_term";
+                    System.out.println(term);
+                } else {
+                    term = "short_term";
+                    System.out.println(term);
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {
             title.setText("Welcome " + currentUser.getDisplayName());
@@ -164,7 +188,7 @@ public class HomeActivity extends AppCompatActivity implements pastAdapter.ItemC
 
     private void getTopTracks() {
         final Request request = new Request.Builder()
-                .url("https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=10&offset=0")
+                .url("https://api.spotify.com/v1/me/top/tracks?time_range="+ term + "&limit=10&offset=0")
                 .addHeader("Authorization", "Bearer " + mAccessToken)
                 .build();
 
@@ -191,7 +215,7 @@ public class HomeActivity extends AppCompatActivity implements pastAdapter.ItemC
 
     private void getTopArtists() {
         final Request request = new Request.Builder()
-                .url("https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=10&offset=0")
+                .url("https://api.spotify.com/v1/me/top/artists?time_range=" + term + "&limit=10&offset=0")
                 .addHeader("Authorization", "Bearer " + mAccessToken)
                 .build();
 
@@ -206,6 +230,7 @@ public class HomeActivity extends AppCompatActivity implements pastAdapter.ItemC
             public void onResponse(Call call, Response response) throws IOException {
                 try {
                     final JSONObject jsonObject = new JSONObject(response.body().string());
+
                     artistJSON = jsonObject;
                     topArtists = parseArtists(jsonObject);
                     Log.d("SpotifyTopArtists", "Top artists: " + topArtists.toString());
