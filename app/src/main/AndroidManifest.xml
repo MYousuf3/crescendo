@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Crescendo"
         tools:targetApi="31">
         <activity
+            android:name=".PopularityActivity"
+            android:exported="false" />
+        <activity
             android:name=".Taste"
             android:exported="false" />
         <activity

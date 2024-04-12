@@ -49,7 +49,7 @@ public class Taste extends AppCompatActivity {
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Taste.this, HomeActivity.class);
+                Intent intent = new Intent(Taste.this, PopularityActivity.class);
                 startActivity(intent);
                 finish();
             }
