@@ -65,7 +65,6 @@ public class HomeActivity extends AppCompatActivity implements pastAdapter.ItemC
     public static ArrayList<Song> topSongs;
     public static ArrayList<Artist> topArtists;
 
-    Button signOut;
     ImageView settings;
     String term;
 
@@ -141,7 +140,7 @@ public class HomeActivity extends AppCompatActivity implements pastAdapter.ItemC
                         }
                     });
         }
-        findViewById(R.id.playWrappedButton).setOnClickListener(view -> authenticateSpotify());
+        findViewById(R.id.playButton).setOnClickListener(view -> authenticateSpotify());
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
