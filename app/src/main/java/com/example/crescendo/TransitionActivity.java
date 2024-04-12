@@ -14,12 +14,11 @@ public class TransitionActivity extends AppCompatActivity {
     public static final String NEXT_ACTIVITY_KEY = "next_activity";
     Random rand;
     TextView transitionText;
-    String[] quips = new String[]{"But wait, there's more.",
+    String[] quips = new String[]{
                                   "Drumroll please...",
                                   "You're not ready for this",
                                   "Hold on to your seats...",
                                   "And now for the big reveal...",
-                                  "That's not all...",
                                   "Cue the fanfare...",
                                   "Hold your applause...",
                                   "Get ready for this...",
