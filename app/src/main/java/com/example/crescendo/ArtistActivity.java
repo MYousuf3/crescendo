@@ -18,6 +18,8 @@ public class ArtistActivity extends AppCompatActivity {
     private TextView artistTaglineView;
     private ImageView artistImageView;
     private List<Artist> topArtists;
+    private FrequencyTable<String, Integer> freqTable;
+    private String topGenre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -12,7 +12,7 @@
         android:layout_width="169dp"
         android:layout_height="50dp"
         android:backgroundTint="@color/calm_green"
-        android:text="Sign Out "
+        android:text="Sign Out"
         android:textAlignment="center"
         android:textColor="@color/nice_black"
         android:textSize="20sp"
