@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class TransitionActivity extends AppCompatActivity {
@@ -16,15 +17,9 @@ public class TransitionActivity extends AppCompatActivity {
     public static final String NEXT_ACTIVITY_KEY = "next_activity";
     Random rand;
     TextView transitionText;
-    String[] quips = new String[]{
-                                  "Drumroll please...",
-                                  "You're not ready for this",
-                                  "Hold on to your seats...",
-                                  "And now for the big reveal...",
-                                  "Cue the fanfare...",
-                                  "Hold your applause...",
-                                  "Get ready for this...",
-                                  "It's called crescendo because it only gets better from here..."};
+    ArrayList<String> quips;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +31,23 @@ public class TransitionActivity extends AppCompatActivity {
 
         rand = new Random();
         transitionText = findViewById(R.id.transitionText);
-        int index = rand.nextInt(quips.length);
-        String quip = quips[index];
+        quips = new ArrayList<>();
+
+        quips.add("You're not ready for this");
+        quips.add("Hold on to your seats...");
+        quips.add("And now for the big reveal...");
+        quips.add("Cue the fanfare...");
+        quips.add("Hold your applause...");
+        quips.add("Get ready for this...");
+        quips.add("It's called crescendo because it only gets better from here...");
+        quips.add("Interesting choice...");
+        quips.add("Care to explain this one?");
+        quips.add("*crickets*");
+        quips.add("As seen on TV!");
+        quips.add("follow @muhammadyii on ig");
+
+        int index = rand.nextInt(quips.size());
+        String quip = quips.remove(index);
 
 
         transitionText.setText(quip);
@@ -64,8 +74,8 @@ public class TransitionActivity extends AppCompatActivity {
         }, 2000); // Delay for 3 seconds
     }
     private void animateViewDownwards(View view) {
-        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationY", 0f, 1200f);
-        animator.setDuration(1900); // Set the duration of the animation in milliseconds (1 second in this case)
+        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationY", 0f, 800f);
+        animator.setDuration(1500); // Set the duration of the animation in milliseconds (1 second in this case)
         animator.start();
     }
 }
