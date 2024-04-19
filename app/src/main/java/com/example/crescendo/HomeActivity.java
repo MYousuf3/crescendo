@@ -91,10 +91,19 @@ public class HomeActivity extends AppCompatActivity implements pastAdapter.ItemC
         cd = findViewById(R.id.playButton);
         term = "long_term";
 
+        Button pastWrapBtn = findViewById(R.id.pastWrapBtn);
 
         Animation rotation = AnimationUtils.loadAnimation(HomeActivity.this, R.anim.rotate);
         rotation.setFillAfter(true);
         cd.startAnimation(rotation);
+
+        pastWrapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, pastWrapsActivity.class);
+                startActivity(intent);
+            }
+        });
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -117,38 +126,6 @@ public class HomeActivity extends AppCompatActivity implements pastAdapter.ItemC
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {
             title.setText("Welcome " + currentUser.getDisplayName());
-            database.collection("users")
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    if (document.get("id").equals(currentUser.getUid())) {
-                                        oldWraps = (String) document.get("wraps");
-                                        System.out.println(oldWraps);
-                                        ArrayList<String> pastWrap = new ArrayList<>();
-                                        try {
-                                            wrapsArray = new JSONArray(oldWraps);
-                                            for (int i = 0; i < wrapsArray.length(); i++) {
-                                                pastWrap.add("Wrap #" + (i + 1));
-                                            }
-                                        } catch (JSONException e) {
-                                            throw new RuntimeException(e);
-                                        }
-
-                                        RecyclerView recyclerView = findViewById(R.id.previousWrap);
-                                        recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
-                                        adapter = new pastAdapter(HomeActivity.this, pastWrap);
-                                        adapter.setClickListener(HomeActivity.this);
-                                        recyclerView.setAdapter(adapter);
-                                    }
-                                }
-                            } else {
-                                System.out.println("Error getting documents." + task.getException());
-                            }
-                        }
-                    });
         }
         findViewById(R.id.playButton).setOnClickListener(view -> authenticateSpotify());
 

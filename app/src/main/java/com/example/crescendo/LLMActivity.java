@@ -49,7 +49,7 @@ public class LLMActivity extends AppCompatActivity {
             public void run() {
                 changeText();
             }
-        }, 2000);
+        }, 2500);
 
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +65,7 @@ public class LLMActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                System.out.println(answer);
                 simArtist.setText(answer);
             }
         });

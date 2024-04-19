@@ -68,7 +68,6 @@ public class TransitionActivity extends AppCompatActivity {
 
 
         transitionText.setText(quip);
-        animateViewDownwards(transitionText);
 
 
         new Handler().postDelayed(() -> {

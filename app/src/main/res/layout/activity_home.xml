@@ -58,22 +58,11 @@
         android:src="@drawable/settings"
         app:tint="@color/calm_green" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/previousWrap"
-        android:layout_width="wrap_content"
-        android:layout_height="168dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="50dp" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="600dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="223dp">
+        android:layout_marginBottom="58dp">
 
         <ImageView
             android:id="@+id/playButton"
@@ -82,14 +71,13 @@
             android:layout_marginStart="141dp"
             android:layout_marginTop="189dp"
             android:layout_marginEnd="142dp"
-            android:animation="@anim/rotate"
             android:layout_marginBottom="83dp"
+            android:animation="@anim/rotate"
             android:src="@drawable/spotify_cd"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-             />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Spinner
             android:id="@+id/spinner"
@@ -109,6 +97,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/pastWrapBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="Past Wraps"
+            app:layout_constraintEnd_toEndOf="@+id/playButton"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="@+id/playButton"
+            app:layout_constraintTop_toBottomOf="@+id/playButton" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>

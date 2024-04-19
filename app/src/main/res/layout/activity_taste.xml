@@ -30,7 +30,7 @@
         android:layout_marginRight="20dp"
         android:fontFamily="@font/metropolis"
         android:lineSpacingExtra="2dp"
-        android:text="Your taste in music is a fusion of introspective lyricism, innovative production, and soulful melodies. Artists like Drake, J Cole, Travis Scott, Daniel Caesar, SZA, and Kanye showcase your affinity for emotionally rich storytelling and diverse sonic landscapes.  Your musical spirit animal is the Eagle, symbolizing vision, strength, and a soaring spirit.       "
+        android:text="Crescendo is thinking..."
         android:textAlignment="center"
         android:textColor="#D5D5D5"
         android:textSize="20sp"

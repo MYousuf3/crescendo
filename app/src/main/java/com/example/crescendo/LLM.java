@@ -7,8 +7,8 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class LLM {
-    static String apiKey = "PLACEHOLDER";
-    static boolean keyIn = false;
+    static String apiKey = "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";
+    static boolean keyIn = true;
     static BufferedReader br;
     public static String chatGPT(String prompt) {
         if (!keyIn) {
@@ -19,7 +19,7 @@ public class LLM {
 
         try {
             URL obj = new URL(url);
-            String question = "Using the following artists, give me THREE UNIQUE artists similar to the artists provided. Do not provide ANY text but the three artsists. Give only one sentence with 3 artists TOTAL. Respond in the same FORMAT AS FOLLOWS. Include 'and' before the third artists: " + prompt;
+            String question = "Using the following artists, write a paragraph recommending 3 new artists and explanations for each choice. ANSWER IN LESS THAN 60 WORDS: " + prompt;
             HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Authorization", "Bearer " + apiKey);
@@ -71,7 +71,7 @@ public class LLM {
 
         try {
             URL obj = new URL(url);
-            String question = "Given the following artists, describe my taste in music. Answer starting with 'Your taste in music is'. DO NOT STRAY FROM THIS FORMAT. After the taste, tell me my 'musical spirit animal'. ANSWER IN LESS THAN 60 WORDS:" + artistNames;
+            String question = "Given the following artists, describe my taste in music. Answer starting with 'Your taste in music is'. DO NOT STRAY FROM THIS FORMAT. After the taste, tell me my 'musical spirit animal'. ANSWER IN LESS THAN 60 WORDS. ANSWER IN ONE PARAGRAPH:" + artistNames;
             HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Authorization", "Bearer " + apiKey);

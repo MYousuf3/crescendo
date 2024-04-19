@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/transition_template"
-    android:backgroundTint="#770E9B"
     android:backgroundTintMode="add">
 
     <!-- ImageView for the background once we have background images -->
@@ -20,13 +19,14 @@
         android:id="@+id/transitionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="148dp"
         android:fontFamily="@font/metropolis"
         android:gravity="center_horizontal"
         android:padding="16dp"
         android:text="Transition Text"
+        android:textColor="#000000"
         android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

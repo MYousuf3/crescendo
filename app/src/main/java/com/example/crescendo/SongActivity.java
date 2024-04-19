@@ -30,7 +30,7 @@ public class SongActivity extends AppCompatActivity {
         songNameView = findViewById(R.id.songName);
         songArtistView = findViewById(R.id.songArtist);
         songImageView = findViewById(R.id.songImage);
-        songTaglineView = findViewById(R.id.songTagline);
+        //songTaglineView = findViewById(R.id.songTagline);
         popularityImageView = findViewById(R.id.popularityBarSong);
 
         // Get the top songs list from HomeActivity
@@ -64,7 +64,7 @@ public class SongActivity extends AppCompatActivity {
         // Update the UI with the song details
         songNameView.setText(songName);
         songArtistView.setText(artists);
-        songTaglineView.setText(tagline);
+        //songTaglineView.setText(tagline);
         // In future, you can load the image from the song's imageURL
         Picasso.get()
                 .load(imageUrl)
