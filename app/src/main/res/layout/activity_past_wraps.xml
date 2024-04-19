@@ -1,9 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pastWrapsActivity">
+    android:background="@color/nice_black">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Title: Welcome Name -->
+
+    <!-- Big Box: Play Your Wrapped -->
+
+    <!-- Hidden Scroll View -->
+
+    <TextView
+        android:id="@+id/titlePastWraps"
+        android:layout_width="309dp"
+        android:layout_height="128dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toStartOf="@+id/settingsIcon"
+        android:fontFamily="@font/metropolis"
+        android:text="Your Past Wraps"
+        android:textColor="@color/calm_green"
+        android:textSize="50sp" />
+
+    <!-- Settings Icon -->
+
+    <ImageView
+        android:id="@+id/settingsIcon"
+        android:layout_width="74dp"
+        android:layout_height="58dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#2EFF00"
+        android:foregroundTint="#11FA00"
+        android:src="@drawable/settings"
+        app:tint="@color/calm_green" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/previousWrap"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/titlePastWraps"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp" />
+
+
+</RelativeLayout>
