@@ -7,13 +7,6 @@
     android:background="@drawable/background_template1"
     android:orientation="vertical">
 
-<!--    <ImageView-->
-<!--        android:id="@+id/songImage"-->
-<!--        android:layout_width="250dp"-->
-<!--        android:layout_height="250dp"-->
-<!--        android:layout_gravity="center_horizontal"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:scaleType="centerCrop" />-->
 
     <FrameLayout
         android:layout_width="match_parent"
