@@ -18,6 +18,7 @@ public class SongActivity extends AppCompatActivity {
     private TextView songArtistView;
     private TextView songTaglineView;
     private ImageView songImageView;
+    private ImageView popularityImageView;
     private List<Song> topSongs;
 
     @Override
@@ -30,6 +31,7 @@ public class SongActivity extends AppCompatActivity {
         songArtistView = findViewById(R.id.songArtist);
         songImageView = findViewById(R.id.songImage);
         songTaglineView = findViewById(R.id.songTagline);
+        popularityImageView = findViewById(R.id.popularityBarSong);
 
         // Get the top songs list from HomeActivity
         topSongs = HomeActivity.topSongs;
@@ -55,7 +57,7 @@ public class SongActivity extends AppCompatActivity {
     private void displaySong(int songNumber) {
         Song song = topSongs.get(songNumber);
         String songName = song.songName;
-        String artists = song.artists.get(0); // Assuming there is at least one artist
+        String artists = "By: " + song.artists.get(0); // Assuming there is at least one artist
         String tagline = song.getTagline();
         String imageUrl = song.getImageURL();
 
@@ -67,5 +69,15 @@ public class SongActivity extends AppCompatActivity {
         Picasso.get()
                 .load(imageUrl)
                 .into(songImageView);
+        setPopularityImage(song.popularity, popularityImageView);
+    }
+    private void setPopularityImage(int popularity, ImageView imageView) {
+        if (popularity >= 80) {
+            imageView.setImageResource(R.drawable.eighty_percent);
+        } else if (popularity >= 60) {
+            imageView.setImageResource(R.drawable.sixty_percent);
+        } else {
+            imageView.setImageResource(R.drawable.forty_percent);
+        }
     }
 }

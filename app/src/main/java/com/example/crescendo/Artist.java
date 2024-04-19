@@ -56,11 +56,11 @@ public class Artist {
     public String getTagline() {
         String tagline;
         if (popularity >= 80) {
-            tagline = "A Hit Artist!";
-        } else if (popularity >= 50) {
-            tagline = "Trending Artist!";
+            tagline = "A Hit Artist that you love!";
+        } else if (popularity >= 60) {
+            tagline = "A trending artist that is getting the popularity they deserve!";
         } else {
-            tagline = "A Hidden Gem Artist!";
+            tagline = "A not so popular hidden gem that you love!";
         }
         return tagline;
     }

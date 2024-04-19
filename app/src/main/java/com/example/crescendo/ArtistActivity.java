@@ -17,6 +17,8 @@ public class ArtistActivity extends AppCompatActivity {
     private TextView artistNameView;
     private TextView artistTaglineView;
     private ImageView artistImageView;
+
+    private ImageView popularityImageView;
     private List<Artist> topArtists;
     private FrequencyTable<String, Integer> freqTable;
     private String topGenre;
@@ -29,6 +31,7 @@ public class ArtistActivity extends AppCompatActivity {
         artistNameView = findViewById(R.id.artistName);
         artistTaglineView = findViewById(R.id.artistTagline);
         artistImageView = findViewById(R.id.artistImage);
+        popularityImageView = findViewById(R.id.popularityBar);
 
         // Assuming topArtists is populated from HomeActivity
         topArtists = HomeActivity.topArtists;
@@ -65,5 +68,15 @@ public class ArtistActivity extends AppCompatActivity {
         Picasso.get()
                 .load(imageUrl)
                 .into(artistImageView);
+        setPopularityImage(artist.popularity, popularityImageView);
+    }
+    private void setPopularityImage(int popularity, ImageView imageView) {
+        if (popularity >= 80) {
+            imageView.setImageResource(R.drawable.eighty_percent);
+        } else if (popularity >= 60) {
+            imageView.setImageResource(R.drawable.sixty_percent);
+        } else {
+            imageView.setImageResource(R.drawable.forty_percent);
+        }
     }
 }

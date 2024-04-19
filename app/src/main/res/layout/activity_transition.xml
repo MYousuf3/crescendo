@@ -23,7 +23,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="148dp"
         android:fontFamily="@font/metropolis"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:padding="16dp"
         android:text="Transition Text"
         android:textSize="48sp"
