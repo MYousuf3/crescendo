@@ -37,7 +37,7 @@ public class GameActivity extends AppCompatActivity {
 
         ImageView avatarImageView = findViewById(R.id.avatarImageView);
         displayArtistNameTextView = findViewById(R.id.displayArtistNameTextView);
-        showInputDialogButton = findViewById(R.id.showInputDialogButton);
+        showInputDialogButton=findViewById(R.id.showInputDialogButton);
 
         //Glide.with(getApplicationContext()).load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkliO9xHJ0NrIYKvWrTl5Hfsfs0JRkSnsPFEQIKnNvNA&s").placeholder(R.drawable.baseline_image_24).into(avatarImageView);
         ArrayList<String> myList=new ArrayList<>();
