@@ -40,7 +40,7 @@ public class GameActivity extends AppCompatActivity {
         showInputDialogButton = findViewById(R.id.showInputDialogButton);
 
         //Glide.with(getApplicationContext()).load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkliO9xHJ0NrIYKvWrTl5Hfsfs0JRkSnsPFEQIKnNvNA&s").placeholder(R.drawable.baseline_image_24).into(avatarImageView);
-        ArrayList<String> myList = new ArrayList<>();
+        ArrayList<String> myList=new ArrayList<>();
         myList.add("Bruno Mars");
 
 
