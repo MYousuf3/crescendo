@@ -31,11 +31,11 @@ public class GameActivity extends AppCompatActivity {
     private Button showInputDialogButton;
     @SuppressLint("MissingInflatedId")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        ImageView avatarImageView = findViewById(R.id.avatarImageView);
+        ImageView avatarImageView=findViewById(R.id.avatarImageView);
         displayArtistNameTextView=findViewById(R.id.displayArtistNameTextView);
         showInputDialogButton=findViewById(R.id.showInputDialogButton);
 
