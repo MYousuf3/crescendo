@@ -7,11 +7,4 @@ plugins {
 id 'com.android.application' version '8.2.1' apply false
     id 'com.google.gms.google-services' version '4.4.1' apply false
 }
-
-task checkstyle(type: Checkstyle) {
-    group = "verification"
-    description = "Runs Checkstyle checks"
-    sourceSets = project.sourceSets
-    configFile = rootProject.file("config/checkstyle.xml")
-    ignoreFailures = false
-}
+apply from: "$project.rootDir/tools/quality/quality.gradle"
