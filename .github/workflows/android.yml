@@ -32,4 +32,7 @@ jobs:
         ./gradlew check
         if [ $? -ne 0 ]; then
           echo "::warning ::Checkstyle violations detected."
+          exit 1
+        else
+          echo "Checkstyle passed successfully."
         fi
