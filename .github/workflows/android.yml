@@ -24,3 +24,10 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+
+    - name: Run Checkstyle
+      run: |
+        ./gradlew check
+        if [ $? -ne 0 ]; then
+          echo "::warning ::Checkstyle violations detected."
+        fi
