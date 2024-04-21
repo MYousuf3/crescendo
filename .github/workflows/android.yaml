@@ -29,14 +29,7 @@ jobs:
     - name: Run Checkstyle
       continue-on-error: true
       run: |
-        ./gradlew checkstyleMain
+        ./gradlew check
         if [ $? -ne 0 ]; then
           echo "::warning ::Checkstyle violations detected."
-        fi
-
-    - name: Check build status
-      run: |
-        if [ $? -ne 0 ]; then
-          echo "Build failed. Exiting."
-          exit 1
         fi
