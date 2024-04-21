@@ -28,7 +28,7 @@ jobs:
 
     - name: Run Checkstyle
       run: |
-        ./gradlew checkstyle
+        ./gradlew check
         if [ $? -ne 0 ]; then
           echo "::warning ::Checkstyle violations detected."
           exit 1
