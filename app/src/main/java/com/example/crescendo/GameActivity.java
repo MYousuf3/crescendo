@@ -28,8 +28,8 @@ import okhttp3.Request;
 public class GameActivity extends AppCompatActivity {
 
     private TextView displayArtistNameTextView;
-    private Button showInputDialogButton;
-    @SuppressLint("MissingInflatedId")
+    private Button showInputDialogButton ;
+    @SuppressLint("MissingInflatedId" )
     @Override
     protected void onCreate(Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
