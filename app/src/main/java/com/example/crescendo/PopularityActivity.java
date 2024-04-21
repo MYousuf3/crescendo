@@ -61,7 +61,7 @@ public class PopularityActivity extends AppCompatActivity {
     }
 
     private void goToTransitionActivity() {
-        Intent intent = new Intent(PopularityActivity.this, HomeActivity.class);
+        Intent intent = new Intent(PopularityActivity.this, GameActivity.class);
         startActivity(intent);
         finish();
     }

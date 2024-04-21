@@ -54,9 +54,9 @@ public class Song {
     public String getTagline() {
         String tagline;
         if (popularity >= 80) {
-            tagline = "A Hit Artist that you love!";
+            tagline = "A Hit Song that you love!";
         } else if (popularity >= 60) {
-            tagline = "A trending artist that is getting the popularity they deserve!";
+            tagline = "A trending song that is getting the popularity they deserve!";
         } else {
             tagline = "A not so popular hidden gem that you love!";
         }

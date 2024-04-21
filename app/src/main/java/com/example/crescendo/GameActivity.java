@@ -1,85 +1,76 @@
 package com.example.crescendo;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.textfield.TextInputEditText;
+import com.squareup.picasso.Picasso;
 
-import org.jetbrains.annotations.Async;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
+import java.util.List;
+import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
 
-    private TextView displayArtistNameTextView;
-    private Button showInputDialogButton;
-    @SuppressLint("MissingInflatedId")
+    private TextView artistNameView;
+    private ImageView artistImageView;
+    private TextInputEditText guessInput;
+    private Button submitButton;
+    private List<Artist> artists;
+    private Artist currentArtist;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        ImageView avatarImageView = findViewById(R.id.avatarImageView);
-        displayArtistNameTextView = findViewById(R.id.displayArtistNameTextView);
-        showInputDialogButton = findViewById(R.id.showInputDialogButton);
+        artistNameView = findViewById(R.id.ArtistName);
+        artistImageView = findViewById(R.id.avatarImageView);
+        guessInput = findViewById(R.id.answer);
+        submitButton = findViewById(R.id.submitBtn);
 
-        //Glide.with(getApplicationContext()).load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkliO9xHJ0NrIYKvWrTl5Hfsfs0JRkSnsPFEQIKnNvNA&s").placeholder(R.drawable.baseline_image_24).into(avatarImageView);
-        ArrayList<String> myList = new ArrayList<>();
-        myList.add("Bruno Mars");
+        // Assume this is populated and passed correctly; otherwise, fetch it as needed
+        artists = HomeActivity.topArtists;
 
-
-       /* displayArtistNameTextView = findViewById(R.id.displayArtistNameTextView);
-
-        ArrayList<String> myList = new ArrayList<>();
-        myList.add("Bruno Mars");
-
-        String imageURL = "https://images.app.goo.gl/pcwGHQuK1Kxk65uw6";
-
-
-
-        displayArtistNameTextView.setText(myList.get(0));
-
-
+        if (!artists.isEmpty()) {
+            loadRandomArtist();
         }
 
-        /*
-                    JSONArray images = jsonObject.getJSONArray("images");
-                    JSONObject imagesObj = images.getJSONObject(0);
-                    String imageURL = imagesObj.getString("url");
-
-                    String imageURL = "https://images.app.goo.gl/pcwGHQuK1Kxk65uw6";
-
-
-                    URL url = new URL(imageURL);
-                    Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            imageView.setImageBitmap(bmp);
-                            displayName.setText(nameString);
-                        }
-
-
-        */
-
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkArtistGuess();
+            }
+        });
     }
 
+    private void loadRandomArtist() {
+        Random random = new Random();
+        // Ensure we get an index starting from 5 (6th position) to the size of the list
+        if (artists.size() > 5) {
+            int randomIndex = 5 + random.nextInt(artists.size() - 5);
+            currentArtist = artists.get(randomIndex);
+            Picasso.get().load(currentArtist.getImageURL()).into(artistImageView);
+            artistNameView.setVisibility(View.INVISIBLE); // Hide the artist name initially
+        }
+    }
 
+    private void checkArtistGuess() {
+        String guess = guessInput.getText().toString().trim();
+        boolean isCorrect = guess.equalsIgnoreCase(currentArtist.artistName);
+        artistNameView.setText(currentArtist.artistName); // Reveal the artist name
+        artistNameView.setVisibility(View.VISIBLE);
+        artistNameView.append(isCorrect ? " - Correct!" : " - Nice try!");
+
+        // Delay for 2 seconds then go back to HomeActivity
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(GameActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }, 2000);
+    }
 }
-

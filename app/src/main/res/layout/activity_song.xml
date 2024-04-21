@@ -77,4 +77,15 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/songTagline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="Artist Tagline or Description"
+        android:textColor="#760000"
+        android:textSize="20sp"
+        android:layout_marginHorizontal="30dp"/>
+
 </LinearLayout>
