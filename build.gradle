@@ -9,3 +9,15 @@ id 'com.android.application' version '8.2.1' apply false
     id "checkstyle"
 }
 apply from: "$project.rootDir/tools/quality/quality.gradle"
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
+    defaultConfig {
+        applicationId "com.example.abc.test"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+}
