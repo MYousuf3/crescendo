@@ -53,9 +53,11 @@ public class GameActivity extends AppCompatActivity {
 
     private void setupGame() {
         Random random = new Random();
-        // Ensure the correct answer is always included
         int correctIndex = random.nextInt(4);  // There are four options
-        currentArtist = artists.get(random.nextInt(artists.size())); // Random artist for the game
+
+        // Exclude top 5 artists from being randomly picked
+        int randomArtistIndex = random.nextInt(artists.size() - 5) + 5;
+        currentArtist = artists.get(randomArtistIndex); // Get a random artist avoiding top 5
         Picasso.get().load(currentArtist.getImageURL()).into(artistImageView);
         artistNameView.setVisibility(View.INVISIBLE); // Initially hide the artist name
 
@@ -70,7 +72,8 @@ public class GameActivity extends AppCompatActivity {
             if (i != correctIndex) { // Fill other options
                 Artist randomArtist;
                 do {
-                    randomArtist = artists.get(random.nextInt(artists.size()));
+                    int index = random.nextInt(artists.size() - 5) + 5;
+                    randomArtist = artists.get(index);
                 } while (randomArtist.artistName.equals(currentArtist.artistName) || contains(options, randomArtist.artistName));
                 options[i] = randomArtist.artistName;
             }
@@ -81,6 +84,7 @@ public class GameActivity extends AppCompatActivity {
             textViews[i].setText(options[i]);
         }
     }
+
 
     // Helper method to check if the array already contains the artist name
     private boolean contains(String[] array, String value) {
