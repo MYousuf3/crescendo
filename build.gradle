@@ -9,7 +9,10 @@ id 'com.android.application' version '8.2.1' apply false
 }
 allprojects {
     repositories {
-        gradlePluginPortal()
+        mavenCentral()
+        maven {
+            url = "https://repo1.maven.org/maven2/"
+        }
     }
     apply plugin: 'checkstyle'
     checkstyle {
