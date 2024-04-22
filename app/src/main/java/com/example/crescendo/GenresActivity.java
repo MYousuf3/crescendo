@@ -13,8 +13,8 @@ public class GenresActivity extends AppCompatActivity {
     private FrequencyTable<String, Integer> freqTable;
     private String topGenre;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState ) {
+        super.onCreate(savedInstanceState) ;
         setContentView(R.layout.activity_genres); // Use the actual layout file name
 
 
