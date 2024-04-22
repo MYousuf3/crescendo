@@ -79,24 +79,38 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:layout_width="227dp"
+            android:layout_height="222dp"
+            android:src="@drawable/record_arm"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.913"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.309"
+            android:rotation=""/>
+
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="132dp"
-            android:layout_height="45dp"
+            android:layout_width="95dp"
+            android:layout_height="53dp"
             android:background="@color/calm_green"
             android:entries="@array/spinner_items"
             android:fontFamily="@font/metropolis"
             android:gravity="center"
-            android:popupBackground="@color/calm_green"
+            android:popupBackground="@color/nice_black"
             android:textAlignment="center"
-            android:textColor="@color/nice_black"
+            android:textColor="@color/calm_green"
             android:textSize="30sp"
             android:textStyle="bold"
 
             app:layout_constraintBottom_toTopOf="@+id/playButton"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.905"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.957" />
 
         <Button
             android:id="@+id/pastWrapBtn"
