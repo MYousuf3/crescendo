@@ -22,6 +22,7 @@ final reportsDir = "$project.buildDir/reports"
 final gradleTaskGroup = 'Verification'
 
 android {
+    compileSdkVersion 27
     lintOptions {
         textOutput "stdout"
         textReport true
