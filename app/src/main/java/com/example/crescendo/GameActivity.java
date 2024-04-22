@@ -5,9 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.squareup.picasso.Picasso;
@@ -18,8 +17,7 @@ public class GameActivity extends AppCompatActivity {
 
     private TextView artistNameView;
     private ImageView artistImageView;
-    private RadioGroup answerChoices;
-    private RadioButton radioButton1, radioButton2, radioButton3, radioButton4;
+    private CheckBox checkBox1, checkBox2, checkBox3, checkBox4;
     private TextView answer1, answer2, answer3, answer4;
     private Button submitButton;
     private List<Artist> artists;
@@ -32,11 +30,10 @@ public class GameActivity extends AppCompatActivity {
 
         artistNameView = findViewById(R.id.ArtistName);
         artistImageView = findViewById(R.id.avatarImageView);
-        answerChoices = findViewById(R.id.answerChoices);
-        radioButton1 = findViewById(R.id.radioButton1);
-        radioButton2 = findViewById(R.id.radioButton2);
-        radioButton3 = findViewById(R.id.radioButton3);
-        radioButton4 = findViewById(R.id.radioButton4);
+        checkBox1 = findViewById(R.id.checkBox1);
+        checkBox2 = findViewById(R.id.checkBox2);
+        checkBox3 = findViewById(R.id.checkBox3);
+        checkBox4 = findViewById(R.id.checkBox4);
         answer1 = findViewById(R.id.answer1);
         answer2 = findViewById(R.id.answer2);
         answer3 = findViewById(R.id.answer3);
@@ -49,48 +46,75 @@ public class GameActivity extends AppCompatActivity {
             setupGame();
         }
 
+        setupCheckBoxes();
+
         submitButton.setOnClickListener(v -> checkAnswer());
     }
 
     private void setupGame() {
         Random random = new Random();
+        // Ensure the correct answer is always included
         int correctIndex = random.nextInt(4);  // There are four options
         currentArtist = artists.get(random.nextInt(artists.size())); // Random artist for the game
         Picasso.get().load(currentArtist.getImageURL()).into(artistImageView);
         artistNameView.setVisibility(View.INVISIBLE); // Initially hide the artist name
 
-        // Set random names for the options, ensuring the correct answer is one of them
+        CheckBox[] checkBoxes = {checkBox1, checkBox2, checkBox3, checkBox4};
+        TextView[] textViews = {answer1, answer2, answer3, answer4};
+
+        // Fill array with names ensuring no duplicates and correct answer included
         String[] options = new String[4];
-        for (int i = 0; i < 4; i++) {
-            if (i == correctIndex) {
-                options[i] = currentArtist.artistName; // Correct answer
-            } else {
+        options[correctIndex] = currentArtist.artistName; // Place correct answer
+
+        for (int i = 0; i < options.length; i++) {
+            if (i != correctIndex) { // Fill other options
                 Artist randomArtist;
                 do {
                     randomArtist = artists.get(random.nextInt(artists.size()));
-                } while (randomArtist == currentArtist);
-                options[i] = randomArtist.artistName; // Random incorrect answers
+                } while (randomArtist.artistName.equals(currentArtist.artistName) || contains(options, randomArtist.artistName));
+                options[i] = randomArtist.artistName;
             }
         }
 
-        answer1.setText(options[0]);
-        answer2.setText(options[1]);
-        answer3.setText(options[2]);
-        answer4.setText(options[3]);
+        // Set the text for each TextView associated with each CheckBox
+        for (int i = 0; i < checkBoxes.length; i++) {
+            textViews[i].setText(options[i]);
+        }
+    }
+
+    // Helper method to check if the array already contains the artist name
+    private boolean contains(String[] array, String value) {
+        for (String element : array) {
+            if (element != null && element.equals(value)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    private void setupCheckBoxes() {
+        CheckBox[] checkBoxes = {checkBox1, checkBox2, checkBox3, checkBox4};
+        for (CheckBox checkBox : checkBoxes) {
+            checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                if (isChecked) {
+                    for (CheckBox otherCheckBox : checkBoxes) {
+                        if (otherCheckBox != checkBox) otherCheckBox.setChecked(false);
+                    }
+                }
+            });
+        }
     }
 
     private void checkAnswer() {
-        int selectedId = answerChoices.getCheckedRadioButtonId();
         String selectedArtistName = "";
-
-        if (selectedId == R.id.radioButton1) {
-            selectedArtistName = answer1.getText().toString();
-        } else if (selectedId == R.id.radioButton2) {
-            selectedArtistName = answer2.getText().toString();
-        } else if (selectedId == R.id.radioButton3) {
-            selectedArtistName = answer3.getText().toString();
-        } else if (selectedId == R.id.radioButton4) {
-            selectedArtistName = answer4.getText().toString();
+        CheckBox[] checkBoxes = {checkBox1, checkBox2, checkBox3, checkBox4};
+        TextView[] textViews = {answer1, answer2, answer3, answer4};
+        for (int i = 0; i < checkBoxes.length; i++) {
+            if (checkBoxes[i].isChecked()) {
+                selectedArtistName = textViews[i].getText().toString();
+                break;
+            }
         }
 
         boolean isCorrect = selectedArtistName.equalsIgnoreCase(currentArtist.artistName);
@@ -104,6 +128,4 @@ public class GameActivity extends AppCompatActivity {
             finish();
         }, 2000);
     }
-
-
 }
