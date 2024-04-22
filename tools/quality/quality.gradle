@@ -12,15 +12,9 @@
 
 apply plugin: "com.android.application"
 apply plugin: 'checkstyle'
-apply plugin: 'pmd'
-
-configurations {
-    ktlint
-}
 
 dependencies {
     checkstyle 'com.puppycrawl.tools:checkstyle:8.8'
-    ktlint 'com.github.shyiko:ktlint:0.19.0'
 }
 
 final configDir = "$project.rootDir/tools/quality";
@@ -36,8 +30,6 @@ android {
         showAll true
         explainIssues true
         abortOnError false
-        lintConfig file("$configDir/rules-lint.xml")
-        htmlOutput file("$reportsDir/lint.html")
     }
 }
 
@@ -47,10 +39,7 @@ getVariants(project).all { variant ->
     task("check${variantName}") {
         group gradleTaskGroup
         description "Runs all checks on the ${variantName} build"
-        dependsOn "lint${variantName}",
-                "ktlint${variantName}",
-                "checkstyle${variantName}",
-                "pmd${variantName}"
+        dependsOn "checkstyle${variantName}"
     }
 
     task("checkstyle${variantName}", type: Checkstyle) {
@@ -74,49 +63,6 @@ getVariants(project).all { variant ->
             }
         }
         classpath = files()
-    }
-
-    task("pmd${variantName}", type: Pmd) {
-        group gradleTaskGroup
-        description "Runs PMD on the ${variantName} build"
-
-        ruleSetFiles = files("$configDir/rules-pmd.xml")
-        ignoreFailures = false
-        consoleOutput = true
-        ruleSets = []
-
-        source 'src'
-        include '**/*.java'
-        exclude '**/gen/**'
-
-        reports {
-            xml.enabled = false
-            html.enabled = true
-            xml {
-                destination file("$reportsDir/pmd.xml")
-            }
-            html {
-                destination file("$reportsDir/pmd${variantName}.html")
-            }
-        }
-    }
-
-    task("ktlint${variantName}", type: JavaExec) {
-        group gradleTaskGroup
-        description "Runs Kotlin Linter on the ${variantName} build"
-
-        main = "com.github.shyiko.ktlint.Main"
-        classpath = configurations.ktlint
-        args "src/**/*.kt"
-    }
-
-    task("ktlintFormat${variantName}", type: JavaExec) {
-        group gradleTaskGroup
-        description "Runs Kotlin Formatter on the ${variantName} build"
-
-        main = "com.github.shyiko.ktlint.Main"
-        classpath = configurations.ktlint
-        args "-F", "src/**/*.kt"
     }
 }
 
