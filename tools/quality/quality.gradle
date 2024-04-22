@@ -10,6 +10,7 @@
  *
  */
 
+apply plugin: "com.android.application"
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
 
