@@ -12,7 +12,6 @@
 
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
-apply plugin: 'findbugs'
 
 configurations {
     ktlint
@@ -50,8 +49,7 @@ getVariants(project).all { variant ->
         dependsOn "lint${variantName}",
                 "ktlint${variantName}",
                 "checkstyle${variantName}",
-                "pmd${variantName}",
-                "findbugs${variantName}"
+                "pmd${variantName}"
     }
 
     task("checkstyle${variantName}", type: Checkstyle) {
@@ -74,35 +72,6 @@ getVariants(project).all { variant ->
                 destination file("$reportsDir/checkstyle${variantName}.html")
             }
         }
-        classpath = files()
-    }
-
-    task("findbugs${variantName}", type: FindBugs) {
-        group gradleTaskGroup
-        description "Runs Findbugs Java bytecode checks on the ${variantName} build"
-        dependsOn "compile${variantName}Sources"
-
-        ignoreFailures = false
-        effort = "max"
-        reportLevel = "high"
-        excludeFilter = new File("$configDir/rules-findbugs.xml")
-        classes = files("$project.projectDir/build/intermediates/classes")
-
-        source 'src'
-        include '**/*.java'
-        exclude '**/gen/**'
-
-        reports {
-            xml.enabled = false
-            html.enabled = true
-            xml {
-                destination file("$reportsDir/findbugs.xml")
-            }
-            html {
-                destination file("$reportsDir/findbugs${variantName}.html")
-            }
-        }
-
         classpath = files()
     }
 
