@@ -18,7 +18,7 @@ allprojects {
     checkstyle {
         // assign the latest checkstyle version explicitly
         // default version is very old, likes 5.9
-        toolVersion = '7.4'
+        toolVersion = "10.12.4"
     }
     task checkstyle(type: Checkstyle) {
         // rules.xml copy from:
