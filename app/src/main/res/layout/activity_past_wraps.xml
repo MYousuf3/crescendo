@@ -6,16 +6,11 @@
     android:layout_height="match_parent"
     android:background="@color/nice_black">
 
-    <!-- Title: Welcome Name -->
-
-    <!-- Big Box: Play Your Wrapped -->
-
-    <!-- Hidden Scroll View -->
-
     <TextView
         android:id="@+id/titlePastWraps"
         android:layout_width="309dp"
         android:layout_height="128dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -27,24 +22,10 @@
         android:textColor="@color/calm_green"
         android:textSize="50sp" />
 
-    <!-- Settings Icon -->
-
-    <ImageView
-        android:id="@+id/settingsIcon"
-        android:layout_width="74dp"
-        android:layout_height="58dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="#2EFF00"
-        android:foregroundTint="#11FA00"
-        android:src="@drawable/settings"
-        app:tint="@color/calm_green" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/previousWrap"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/titlePastWraps"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
@@ -54,13 +35,10 @@
         android:id="@+id/returnBtn"
         android:layout_width="112dp"
         android:layout_height="45dp"
-        android:layout_below="@+id/previousWrap"
-        android:layout_alignStart="@+id/previousWrap"
-        android:layout_alignEnd="@+id/previousWrap"
-        android:layout_marginStart="129dp"
-        android:layout_marginTop="94dp"
-        android:layout_marginEnd="130dp"
-        android:text="Return" />
-
+        android:text="Return"
+        android:backgroundTint="@color/calm_green"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp" />
 
 </RelativeLayout>

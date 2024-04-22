@@ -85,7 +85,7 @@ public class HomeActivity extends AppCompatActivity implements pastAdapter.ItemC
         cd = findViewById(R.id.playButton);
         term = "long_term";
 
-        Button pastWrapBtn = findViewById(R.id.pastWrapBtn);
+        ImageView pastWrapBtn = findViewById(R.id.pastWrapImage);
 
         Animation rotation = AnimationUtils.loadAnimation(HomeActivity.this, R.anim.rotate);
         rotation.setFillAfter(true);
