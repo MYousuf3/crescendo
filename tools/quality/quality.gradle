@@ -10,8 +10,10 @@
  *
  */
 
-apply plugin: "com.android.application"
-apply plugin: 'checkstyle'
+plugins {
+    id "com.android.application"
+    id "checkstyle"
+}
 
 dependencies {
     checkstyle 'com.puppycrawl.tools:checkstyle:8.8'
@@ -22,7 +24,6 @@ final reportsDir = "$project.buildDir/reports"
 final gradleTaskGroup = 'Verification'
 
 android {
-    compileSdkVersion 27
     lintOptions {
         textOutput "stdout"
         textReport true
